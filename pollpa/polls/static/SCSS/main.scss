@@ -10,13 +10,14 @@
   vertical-align: text-top;
   align-items: flex-start;
 
+  p.heading{
+    margin-top: 6px;
+    font-weight: bold;
+  }
+
   .level-item{
     p{
       width: 250px;
     }
-  }
-
-  i.fa{
-    margin-bottom: 12px;
   }
 }

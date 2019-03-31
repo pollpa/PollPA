@@ -61,9 +61,10 @@ footer {
   padding-bottom: 42px;
   vertical-align: text-top;
   align-items: flex-start; }
+  #info p.heading {
+    margin-top: 6px;
+    font-weight: bold; }
   #info .level-item p {
     width: 250px; }
-  #info i.fa {
-    margin-bottom: 12px; }
 
 /*# sourceMappingURL=main.css.map */
