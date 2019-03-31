@@ -1,4 +1,9 @@
 {% extends 'polls/base.html' %}
+{% load static %}
+
+{% block css %}
+  <link type = "text/css" rel = "stylesheet" href = "{% static 'CSS/main.css' %}">
+{% endblock %}
 
 {% block body %}
   <div id = "wrapper">

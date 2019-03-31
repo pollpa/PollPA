@@ -44,3 +44,9 @@ def poll(request, poll_id):
             }]
         }]
     })
+
+def login(request):
+    return render(request, 'polls/auth.html', {
+        "title": "Login",
+        "action": "/login"
+    })
