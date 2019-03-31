@@ -38,6 +38,18 @@ $padding-left: 36px;
 
 // Colors
 $light-gray: #f9f9f9;
+$green: #3fc380;
+$red: #d24d57;
+
+.is-green{
+  background-color: $green !important;
+  color: white !important;
+}
+
+.is-red{
+  background-color: $red !important;
+  color: white !important;
+}
 
 // Text
 a{

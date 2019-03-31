@@ -17,6 +17,16 @@ header.jumbo{
 
   .column{
     transform: translateY(-1.5 * $padding-top);
+  }
+
+  .column:first-child{
     padding: 0;
+    padding-right: 20px;
+  }
+
+  .poll-box{
+    width: 100%;
+    margin: 0;
+    box-shadow: none;
   }
 }

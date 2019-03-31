@@ -1,5 +1,6 @@
 @import "theme";
 @import "nav";
+@import "poll-box";
 @import "header";
 @import "footer";
 
@@ -10,7 +11,6 @@
   padding-bottom: 3 * $padding-top;
   vertical-align: text-top;
   align-items: flex-start;
-  padding-bottom: 4 * $padding-top;
 
   p.heading{
     margin-top: 6px;
@@ -21,5 +21,16 @@
     p{
       width: 250px;
     }
+  }
+}
+
+#polls{
+  padding-top: 2 * $padding-top;
+  padding-bottom: 4 * $padding-top + 24px + 3 * $padding-top;
+  padding-left: $padding-left;
+  padding-right: $padding-left;
+
+  .columns{
+    margin-top: 5px;
   }
 }

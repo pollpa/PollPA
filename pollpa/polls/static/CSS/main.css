@@ -20,6 +20,14 @@ h1, h2, h3, h4, h5, h6, p, li, a {
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold; }
 
+.is-green {
+  background-color: #3fc380 !important;
+  color: white !important; }
+
+.is-red {
+  background-color: #d24d57 !important;
+  color: white !important; }
+
 a {
   transition: 0.2s all; }
 
@@ -39,6 +47,26 @@ nav {
   color: white;
   margin: 0 !important; }
 
+.poll-box {
+  width: 350px;
+  height: 150px;
+  margin: 12px;
+  text-align: left;
+  padding: 20px;
+  position: relative; }
+  .poll-box h3 {
+    line-height: 1.5rem; }
+  .poll-box p.is-size-5 {
+    margin-bottom: 6px; }
+  .poll-box .badges {
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 40px); }
+  .poll-box .level-left .level-item:not(:last-child) {
+    margin-right: .5rem; }
+  .poll-box .level-right p {
+    font-size: 0.8rem; }
+
 header {
   padding: 14px 36px;
   margin: 0 !important; }
@@ -54,8 +82,14 @@ header.jumbo {
   header.jumbo .title, header.jumbo .subtitle {
     color: white; }
   header.jumbo .column {
-    transform: translateY(-21px);
-    padding: 0; }
+    transform: translateY(-21px); }
+  header.jumbo .column:first-child {
+    padding: 0;
+    padding-right: 20px; }
+  header.jumbo .poll-box {
+    width: 100%;
+    margin: 0;
+    box-shadow: none; }
 
 html,
 body {
@@ -78,12 +112,19 @@ footer {
   padding-top: 42px;
   padding-bottom: 42px;
   vertical-align: text-top;
-  align-items: flex-start;
-  padding-bottom: 56px; }
+  align-items: flex-start; }
   #info p.heading {
     margin-top: 6px;
     font-weight: bold; }
   #info .level-item p {
     width: 250px; }
+
+#polls {
+  padding-top: 28px;
+  padding-bottom: 122px;
+  padding-left: 36px;
+  padding-right: 36px; }
+  #polls .columns {
+    margin-top: 5px; }
 
 /*# sourceMappingURL=main.css.map */

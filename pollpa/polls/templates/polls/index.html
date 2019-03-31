@@ -2,13 +2,12 @@
 
 {% block header %}
   <header class = "jumbo columns is-vcentered">
-    <div class = "column">
+    <div class = "column is-half">
       <h1 class = "title is-size-2">Big Title</h1>
       <p class = "subtitle">Nisi labore mollit consequat eiusmod enim nostrud deserunt eu anim proident voluptate.</p>
       <a class = "button" href = "">Get Started</a>
     </div>
-    <div class = "column">
-    </div>
+    {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=True id=12243 %}
   </header>
 {% endblock %}
 
@@ -40,6 +39,18 @@
            Ea pariatur magna dolor adipisicing consequat anim nisi magna sit proident ut eiusmod aliquip nulla sunt aute officia.
         </p>
       </div>
+    </div>
+  </section>
+
+  <section id = "polls">
+    <div class = "has-text-centered">
+      <h2 class = "is-size-5 heading">All Polls</h2>
+    </div">
+
+    <div class="columns is-multiline is-centered">
+      {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=False id=12243 class="is-narrow" %}
+      {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=True id=143525 class="is-narrow" %}
+      {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=True id=143525 class="is-narrow" %}
     </div>
   </section>
 {% endblock %}

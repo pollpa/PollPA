@@ -1,0 +1,30 @@
+.poll-box{
+  width: 350px;
+  height: 150px;
+  margin: 12px;
+  text-align: left;
+  padding: 20px;
+  position: relative;
+
+  h3{
+    line-height: 1.5rem;
+  }
+
+  p.is-size-5{
+    margin-bottom: 6px;
+  }
+
+  .badges{
+    position: absolute;
+    bottom: 20px;
+    width: calc(100% - 40px);
+  }
+
+  .level-left .level-item:not(:last-child){
+    margin-right: .5rem;
+  }
+
+  .level-right p{
+    font-size: 0.8rem;
+  }
+}
