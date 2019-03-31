@@ -28,6 +28,10 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #d24d57 !important;
   color: white !important; }
 
+.is-blue {
+  background-color: #2980b9 !important;
+  color: white !important; }
+
 a {
   transition: 0.2s all; }
 

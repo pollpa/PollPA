@@ -1,0 +1,54 @@
+@font-face {
+  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
+  font-family: "IBM Plex Sans"; }
+@font-face {
+  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
+  font-family: "IBM Plex Sans";
+  font-weight: bold; }
+@font-face {
+  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Italic.ttf");
+  font-family: "IBM Plex Sans";
+  font-style: italic; }
+@font-face {
+  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-BoldItalic.ttf");
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: bold; }
+h1, h2, h3, h4, h5, h6, p, li, a {
+  font-family: "IBM Plex Sans"; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold; }
+
+.is-green {
+  background-color: #3fc380 !important;
+  color: white !important; }
+
+.is-red {
+  background-color: #d24d57 !important;
+  color: white !important; }
+
+.is-blue {
+  background-color: #2980b9 !important;
+  color: white !important; }
+
+a {
+  transition: 0.2s all; }
+
+a.light {
+  color: white; }
+  a.light:hover {
+    color: #f9f9f9; }
+
+body {
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden; }
+  body .columns {
+    height: 100%;
+    display: flex;
+    padding: 20px; }
+  body .button {
+    border: none; }
+
+/*# sourceMappingURL=auth.css.map */

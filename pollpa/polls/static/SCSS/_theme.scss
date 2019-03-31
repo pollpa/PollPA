@@ -40,6 +40,7 @@ $padding-left: 36px;
 $light-gray: #f9f9f9;
 $green: #3fc380;
 $red: #d24d57;
+$blue: #2980b9;
 
 .is-green{
   background-color: $green !important;
@@ -48,6 +49,11 @@ $red: #d24d57;
 
 .is-red{
   background-color: $red !important;
+  color: white !important;
+}
+
+.is-blue{
+  background-color: $blue !important;
   color: white !important;
 }
 
