@@ -1,0 +1,57 @@
+{% extends 'polls/content.html' %}
+
+{% block header %}
+  <!-- <header class = "jumbo columns is-vcentered">
+    <div class = "column is-half">
+      <h1 class = "title is-size-2">Big Title</h1>
+      <p class = "subtitle">Nisi labore mollit consequat eiusmod enim nostrud deserunt eu anim proident voluptate.</p>
+      <a class = "button" href = "">Get Started</a>
+    </div>
+    {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=True id=12243 %}
+  </header> -->
+{% endblock %}
+
+{% block content %}
+  {{poll_id}}
+  <!-- <section id = "info" class="level">
+    <div class="level-item has-text-centered">
+      <div>
+        <i class = "fas fa-user-secret is-size-3"></i>
+        <p class="heading is-size-6">Anonymous</p>
+        <p>
+          Eiusmod consectetur enim ex cillum culpa proident qui tempor proident. Pariatur minim tempor qui minim id consectetur cillum ipsum labore excepteur.
+        </p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <i class = "fas fa-bolt is-size-3"></i>
+        <p class="heading is-size-6">Instant</p>
+        <p>
+          Dolore occaecat ullamco elit sint consectetur aliquip ex fugiat cillum cupidatat officia excepteur.
+        </p>
+      </div>
+    </div>
+    <div class="level-item has-text-centered">
+      <div>
+        <i class = "fas fa-chart-pie is-size-3"></i>
+        <p class="heading is-size-6">Informative</p>
+        <p>
+           Ea pariatur magna dolor adipisicing consequat anim nisi magna sit proident ut eiusmod aliquip nulla sunt aute officia.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id = "polls">
+    <div class = "has-text-centered">
+      <h2 class = "is-size-5 heading">All Polls</h2>
+    </div">
+
+    <div class="columns is-multiline is-centered">
+      {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=False id=12243 class="is-narrow" %}
+      {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=True id=143525 class="is-narrow" %}
+      {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=True id=143525 class="is-narrow" %}
+    </div>
+  </section> -->
+{% endblock %}
