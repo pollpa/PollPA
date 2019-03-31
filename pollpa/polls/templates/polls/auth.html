@@ -10,8 +10,9 @@
     <div class = "column is-6">
       <h1 class = "title">{{title}}</h1>
       <form action = "{{action}}" method = "post">
-        <input class = "input" type = "text" name = "username" placeholder = "Username"/>
-        <input class = "input" type = "password" name = "password" placeholder = "Password"/>
+        {% for field in fields %}
+          <input class = "input" type = "{{field.type}}" name = "{{field.name}}" placeholder = "{{field.placeholder}}"/>
+        {% endfor %}
         <br>
         <br>
         <button class = "button is-blue light" type = "submit"> {{title}}

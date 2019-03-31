@@ -48,5 +48,32 @@ def poll(request, poll_id):
 def login(request):
     return render(request, 'polls/auth.html', {
         "title": "Login",
-        "action": "/login"
+        "action": "/login",
+        "fields": [{
+            "type": "text",
+            "name": "username",
+            "placeholder": "Username"
+        },
+        {
+            "type": "password",
+            "name": "password",
+            "placeholder": "Password"
+        }]
+    })
+
+def signup(request):
+    return render(request, 'polls/auth.html', {
+        "title": "Sign Up",
+        "action": "/signup",
+        # "fields": [{
+        #     "type": "text",
+        #     "name": "username",
+        #     "placeholder": "Username"
+        # },
+        # {
+        #     "type": "password",
+        #     "name": "password",
+        #     "placeholder": "Password"
+        # },
+        # ]
     })
