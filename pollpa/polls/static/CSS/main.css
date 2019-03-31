@@ -71,6 +71,13 @@ header {
   padding: 14px 36px;
   margin: 0 !important; }
 
+header.default {
+  padding-top: 42px;
+  padding-bottom: 42px;
+  background-color: #f9f9f9; }
+  header.default .title {
+    margin-bottom: 16px; }
+
 header.jumbo {
   background: #2980b9;
   /* fallback for old browsers */
@@ -126,5 +133,16 @@ footer {
   padding-right: 36px; }
   #polls .columns {
     margin-top: 5px; }
+
+#poll {
+  padding: 42px 36px;
+  padding-bottom: 122px;
+  margin: 0; }
+  #poll .tag {
+    margin-bottom: 4px; }
+  #poll .checkbox span, #poll .radio span {
+    color: #aaaaaa; }
+  #poll input[type=checkbox], #poll input[type=radio] {
+    margin-right: 5px; }
 
 /*# sourceMappingURL=main.css.map */

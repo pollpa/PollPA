@@ -1,0 +1,31 @@
+<h2 class = "is-size-4 title">{{question.title}}</h2>
+<p class = "subtitle is-size-5">{{question.description}}</p>
+
+{% if question.type == "checkbox" %}
+  {% for option in question.options %}
+    <label class="checkbox">
+      <input type="checkbox">
+      {{option.title}}
+      {% if option.description %}
+        <span>({{option.description}})</span>
+      {% endif %}
+    </label>
+    <br>
+  {% endfor %}
+{% elif question.type == "radio" %}
+  <div class="control">
+    {% for option in question.options %}
+      <label class="radio">
+        <input type="radio" name="answer">
+        {{option.title}}
+        {% if option.description %}
+          <span>({{option.description}})</span>
+        {% endif %}
+      </label>
+      <br>
+    {% endfor %}
+  </div>
+{% endif %}
+
+<br>
+<br>

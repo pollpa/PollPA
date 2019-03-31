@@ -3,6 +3,16 @@ header{
   margin: 0 !important;
 }
 
+header.default{
+  padding-top: 3 * $padding-top;
+  padding-bottom: 3 * $padding-top;
+  background-color: $light-gray;
+
+  .title{
+    margin-bottom: 16px;
+  }
+}
+
 header.jumbo{
   //GRADIENT
   background: #2980b9;  /* fallback for old browsers */

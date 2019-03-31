@@ -34,3 +34,21 @@
     margin-top: 5px;
   }
 }
+
+#poll{
+  padding: 3 * $padding-top $padding-left;
+  padding-bottom: 4 * $padding-top + 24px + 3 * $padding-top;
+  margin: 0;
+
+  .tag{
+    margin-bottom: 4px;
+  }
+
+  .checkbox span, .radio span{
+    color: #aaaaaa;
+  }
+
+  input[type=checkbox], input[type=radio]{
+    margin-right: 5px;
+  }
+}
