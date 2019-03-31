@@ -24,4 +24,29 @@
   font-weight: bold;
 }
 
-// COLORS
+h1,h2,h3,h4,h5,h6,p,li,a{
+  font-family: "IBM Plex Sans";
+}
+
+h1,h2,h3,h4,h5,h6{
+  font-weight: bold;
+}
+
+// Spacing
+$padding-top: 14px;
+$padding-left: 24px;
+
+// Colors
+$light-gray: #f9f9f9;
+
+// Text
+a{
+  transition: 0.2s all;
+}
+
+a.light{
+  color: white;
+  &:hover{
+    color: $light-gray;
+  }
+}

@@ -1,0 +1,19 @@
+{% extends 'polls/base.html' %}
+
+{% block body %}
+  <div id = "wrapper">
+    <!-- NAV -->
+    {% include "polls/nav.html" %}
+
+    <!-- HEADER -->
+    {% block header %}
+    {% endblock %}
+
+    <!-- CONTENT -->
+    {% block content %}
+    {% endblock %}
+
+    <!-- FOOTER -->
+    {% include "polls/footer.html" %}
+  </div>
+{% endblock %}

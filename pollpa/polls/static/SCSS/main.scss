@@ -1,1 +1,22 @@
 @import "theme";
+@import "nav";
+@import "footer";
+
+#info{
+  background: $light-gray;
+  margin: 0;
+  padding-top: 3 * $padding-top;
+  padding-bottom: 3 * $padding-top;
+  vertical-align: text-top;
+  align-items: flex-start;
+
+  .level-item{
+    p{
+      width: 250px;
+    }
+  }
+
+  i.fa{
+    margin-bottom: 12px;
+  }
+}

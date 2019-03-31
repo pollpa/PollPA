@@ -14,5 +14,56 @@
   font-family: "IBM Plex Sans";
   font-style: italic;
   font-weight: bold; }
+h1, h2, h3, h4, h5, h6, p, li, a {
+  font-family: "IBM Plex Sans"; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: bold; }
+
+a {
+  transition: 0.2s all; }
+
+a.light {
+  color: white; }
+  a.light:hover {
+    color: #f9f9f9; }
+
+nav {
+  background: #2980b9;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2c3e50, #2980b9);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 14px 24px;
+  color: white;
+  margin: 0 !important; }
+
+html,
+body {
+  height: 100%; }
+
+#wrapper {
+  min-height: 100%;
+  position: relative; }
+
+footer {
+  background: #f9f9f9;
+  padding: 28px 24px;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+
+#info {
+  background: #f9f9f9;
+  margin: 0;
+  padding-top: 42px;
+  padding-bottom: 42px;
+  vertical-align: text-top;
+  align-items: flex-start; }
+  #info .level-item p {
+    width: 250px; }
+  #info i.fa {
+    margin-bottom: 12px; }
 
 /*# sourceMappingURL=main.css.map */
