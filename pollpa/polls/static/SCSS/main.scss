@@ -1,5 +1,6 @@
 @import "theme";
 @import "nav";
+@import "header";
 @import "footer";
 
 #info{
@@ -9,6 +10,7 @@
   padding-bottom: 3 * $padding-top;
   vertical-align: text-top;
   align-items: flex-start;
+  padding-bottom: 4 * $padding-top;
 
   p.heading{
     margin-top: 6px;

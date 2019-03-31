@@ -1,0 +1,22 @@
+header{
+  padding: $padding-top $padding-left;
+  margin: 0 !important;
+}
+
+header.jumbo{
+  //GRADIENT
+  background: #2980b9;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #2c3e50, #2980b9); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  height: 80vh;
+
+  .title,.subtitle{
+    color: white;
+  }
+
+  .column{
+    transform: translateY(-1.5 * $padding-top);
+    padding: 0;
+  }
+}
