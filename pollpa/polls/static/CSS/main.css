@@ -14,9 +14,6 @@
   font-family: "IBM Plex Sans";
   font-style: italic;
   font-weight: bold; }
-h1, h2, h3, h4, h5, h6, p, li, a {
-  font-family: "IBM Plex Sans"; }
-
 h1, h2, h3, h4, h5, h6 {
   font-weight: bold; }
 
@@ -148,5 +145,10 @@ footer {
     color: #aaaaaa; }
   #poll input[type=checkbox], #poll input[type=radio] {
     margin-right: 5px; }
+
+form {
+  padding: 42px 36px; }
+  form .field {
+    margin-bottom: 8px !important; }
 
 /*# sourceMappingURL=main.css.map */

@@ -52,3 +52,11 @@
     margin-right: 5px;
   }
 }
+
+form{
+  padding: 3 * $padding-top $padding-left;
+
+  .field{
+    margin-bottom: 8px !important;
+  }
+}
