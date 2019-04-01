@@ -100,3 +100,6 @@ def reset(request):
 
 def account(request):
     return render(request, 'polls/account.html', {})
+
+def suggest(request):
+    return render(request, 'polls/suggest.html', {})

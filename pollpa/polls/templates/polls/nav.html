@@ -11,6 +11,7 @@
     <p class="level-item"><a href = "/admin" class = "button is-small is-danger">Admin</a></p>
     {% endif %}
     <p class="level-item"><a href = "/" class = "light">Home</a></p>
+    <p class="level-item"><a href = "/suggest" class = "light">Suggest a Question</a></p>
     {% if request.user.is_authenticated %}
     <p class="level-item"><a href = "/" class = "light">Vote</a></p>
     <p class="level-item"><a href = "{% url 'account' %}" class = "light">My Account</a></p>
