@@ -2,23 +2,29 @@
 {% load static %}
 
 {% block css %}
-  <link type = "text/css" rel = "stylesheet" href = "{% static 'CSS/main.css' %}">
+<link type="text/css" rel="stylesheet" href="{% static 'CSS/main.css' %}">
 {% endblock %}
 
 {% block body %}
-  <div id = "wrapper">
-    <!-- NAV -->
-    {% include "polls/nav.html" %}
+<div id="wrapper">
+  <!-- NAV -->
+  {% include "polls/nav.html" %}
 
-    <!-- HEADER -->
-    {% block header %}
-    {% endblock %}
+  <!-- HEADER -->
+  {% block header %}
+  {% endblock %}
 
-    <!-- CONTENT -->
-    {% block content %}
-    {% endblock %}
-
-    <!-- FOOTER -->
-    {% include "polls/footer.html" %}
+  {% if error %}
+  <div class="notification is-danger">
+    {{error}}
   </div>
+  {% endif %}
+
+  <!-- CONTENT -->
+  {% block content %}
+  {% endblock %}
+
+  <!-- FOOTER -->
+  {% include "polls/footer.html" %}
+</div>
 {% endblock %}
