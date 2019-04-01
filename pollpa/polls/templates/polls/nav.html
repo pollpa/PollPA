@@ -7,8 +7,15 @@
   <!-- Right side -->
   <!-- TODO: update this nav based on user status -->
   <div class="level-right">
+    {% if request.user.is_superuser %}
+    <p class="level-item"><a href = "/admin" class = "button is-small is-danger">Admin</a></p>
+    {% endif %}
     <p class="level-item"><a href = "/" class = "light">Home</a></p>
+    {% if request.user.is_authenticated %}
     <p class="level-item"><a href = "/" class = "light">Vote</a></p>
-    <p class="level-item"><a href = "/" class = "light">Sign In</a></p>
+    <p class="level-item"><a href = "{% url 'account' %}" class = "light">My Account</a></p>
+    {% else %}
+    <p class="level-item"><a href = "{% url 'login' %}" class = "light">Sign In</a></p>
+    {% endif %}
   </div>
 </nav>
