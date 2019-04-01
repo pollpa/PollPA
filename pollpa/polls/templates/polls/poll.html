@@ -1,4 +1,5 @@
 {% extends 'polls/content.html' %}
+{% load static %}
 
 {% block header %}
   <header class = "default">
@@ -24,6 +25,12 @@
     </div>
     <div class = "column is-10">
       {% if completed %}
+        {% for question in questions %}
+          <h2 class = "is-size-4 title">{{question.title}}</h2>
+          <p class = "subtitle is-size-5">{{question.description}}</p>
+          <br>
+          <br>
+        {% endfor %}
       {% else %}
         {% for question in questions %}
           {% include "polls/question.html" with question=question %}
@@ -31,4 +38,11 @@
       {% endif %}
     </div>
   </section>
+{% endblock %}
+
+{% block scripts %}
+  {% if completed %}
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+    <script src = "{% static 'JS/poll.js' %}"></script>
+  {% endif %}
 {% endblock %}

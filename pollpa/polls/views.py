@@ -8,7 +8,7 @@ def index(request):
 def poll(request, poll_id):
     return render(request, 'polls/poll.html', {
         "poll_id": poll_id,
-        "completed": False,
+        "completed": True,
         "questions": [{
             "title": "Question 1 (Checkbox)?",
             "description": "Testing",
