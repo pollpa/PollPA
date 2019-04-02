@@ -26,20 +26,21 @@
   <div class="column is-10">
     {% if poll.completed %}
     {% for response in responses %}
-          <h2 class = "is-size-4 title">{{response.title}}</h2>
-          <p class = "subtitle is-size-5">{{response.description}}</p>
+    <h2 class="is-size-4 title">{{response.title}}</h2>
+    <p class="subtitle is-size-5">{{response.description}}</p>
 
-          {% if response.graph == "bar" %}
-            {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
-          {% endif %}
-          <br>
-          <br>
-        {% endfor %}
+    {% if response.graph == "bar" %}
+    {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
+    {% endif %}
+    <br>
+    <br>
+    {% endfor %}
     {% else %}
-    not completed
+    <form action="/poll/{{poll.id}}/">
     {% for question in poll.questions %}
-    question
     {% include 'polls/question.html' with question=question %}
+    <button type="submit" class="button is-primary">Vote</button>
+    </form>
     {% endfor %}
     {% endif %}
   </div>
@@ -47,8 +48,8 @@
 {% endblock %}
 
 {% block scripts %}
-  {% if completed %}
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
-    <script src = "{% static 'JS/poll.js' %}"></script>
-  {% endif %}
+{% if completed %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+<script src="{% static 'JS/poll.js' %}"></script>
+{% endif %}
 {% endblock %}

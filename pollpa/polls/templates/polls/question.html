@@ -1,30 +1,32 @@
-<h2 class = "is-size-4 title">{{question.text}}</h2>
-<p class = "subtitle is-size-5">{{question.description}}</p>
+<h2 class="is-size-4 title">{{question.text}}</h2>
+<p class="subtitle is-size-5">{{question.description}}</p>
 
 {% if question.kind == "MS" %}
+<div class="control">
   {% for option in question.options %}
-    <label class="checkbox">
-      <input type="checkbox">
-      {{option.text}}
-      {% if option.description %}
-        <span>({{option.description}})</span>
-      {% endif %}
-    </label>
-    <br>
+  <label class="checkbox">
+    <input type="checkbox" name="{{option.id}}">
+    {{option.text}}
+    {% if option.description %}
+    <span>({{option.description}})</span>
+    {% endif %}
+  </label>
+  <br>
   {% endfor %}
+</div>
 {% elif question.kind == "SS" %}
-  <div class="control">
-    {% for option in question.options %}
-      <label class="radio">
-        <input type="radio" name="answer">
-        {{option.text}}
-        {% if option.description %}
-          <span>({{option.description}})</span>
-        {% endif %}
-      </label>
-      <br>
-    {% endfor %}
-  </div>
+<div class="control">
+  {% for option in question.options %}
+  <label class="radio">
+    <input type="radio" name="{{option.id}}">
+    {{option.text}}
+    {% if option.description %}
+    <span>({{option.description}})</span>
+    {% endif %}
+  </label>
+  <br>
+  {% endfor %}
+</div>
 {% endif %}
 
 <br>
