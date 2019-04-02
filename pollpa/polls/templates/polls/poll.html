@@ -40,12 +40,13 @@
       <br>
       {% endfor %}
     {% elif state == "vote" %}
-    <form action="/poll/{{poll.id}}/">
-      {% for question in poll.questions %}
-        {% include 'polls/question.html' with question=question %}
-      {% endfor %}
-      <button type="submit" class="button is-primary">Vote</button>
-    </form>
+      <form action="/poll/{{poll.id}}/" method="post">
+        {% csrf_token %}
+        {% for question in poll.questions %}
+          {% include 'polls/question.html' with question=question %}
+        {% endfor %}
+        <button type="submit" class="button is-primary">Vote</button>
+      </form>
     {% elif state == "authenticate" %}
       <div class="notification is-warning">
         <p>
