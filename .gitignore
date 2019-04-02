@@ -124,3 +124,6 @@ dmypy.json
 
 # Sass
 .sass-cache
+
+directory.pdf
+names.txt
