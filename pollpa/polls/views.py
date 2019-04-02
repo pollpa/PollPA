@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from .models import Poll
 
 from .models import Profile
 
@@ -10,44 +11,7 @@ def index(request):
     return render(request, 'polls/index.html', {})
 
 def poll(request, poll_id):
-    return render(request, 'polls/poll.html', {
-        "poll_id": poll_id,
-        "completed": False,
-        "questions": [{
-            "title": "Question 1 (Checkbox)?",
-            "description": "Testing",
-            "type": "checkbox",
-            "options": [{
-                "title": "a",
-                "description": "This is a description."
-            },
-            {
-                "title": "b",
-                "description": ""
-            },
-            {
-                "title": "c",
-                "description": ""
-            }]
-        },
-        {
-            "title": "Question 2 (Radio)?",
-            "description": "Testing",
-            "type": "radio",
-            "options": [{
-                "title": "a",
-                "description": ""
-            },
-            {
-                "title": "b",
-                "description": "This is a description"
-            },
-            {
-                "title": "c",
-                "description": ""
-            }]
-        }]
-    })
+    return render(request, 'polls/poll.html', {"poll": get_object_or_404(Poll, id=poll_id)})
 
 def _logout(request):
     logout(request)
