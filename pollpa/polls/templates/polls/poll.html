@@ -31,6 +31,8 @@
 
           {% if response.graph == "bar" %}
             {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
+          {% elif response.graph == "binary-slider" %}
+            {% include "polls/graphs/binary-slider.html" with data=response.data %}
           {% endif %}
           <br>
           <br>

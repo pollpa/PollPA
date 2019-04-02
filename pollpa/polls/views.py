@@ -65,6 +65,15 @@ def poll(request, poll_id):
                 "x": "c",
                 "y": 300
             }]
+        },
+        {
+            "title": "Question 2 (Slider)?",
+            "description": "Testing",
+            "graph": "binary-slider",
+            "data": {
+                "yes": 100,
+                "no": 50
+            }
         }]
     })
 

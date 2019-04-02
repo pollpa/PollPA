@@ -88,7 +88,47 @@ function drawBarCharts(){
   });
 }
 
+/*
+  Binary Slider
+*/
+
+function drawBinarySlider(currentThis, data){
+  var slider = d3.select(currentThis);
+  var total = data.yes + data.no,
+      yes = 100 * data.yes / total,
+      no = 100 * data.no / total;
+
+  console.log(slider.select(".yes-half"));
+
+  slider.select(".yes-half")
+    .style("width", Math.floor(yes) + "%")
+    .html("<p class = 'heading is-size-6'>YES</p><p class = 'is-size-5'>" + yes.toFixed(2) + "%</p>");
+
+  slider.select(".no-half")
+    .style("width", Math.floor(no) + "%")
+    .html("<p class = 'heading is-size-6'>NO</p><p class = 'is-size-5'>" + no.toFixed(2) + "%</p>");
+}
+
+function drawBinarySliders(){
+  d3.selectAll(".binary-slider").each(function(d, i){
+    var data = JSON.parse(this.dataset.values.replace(/'/g, "\""));
+    data.yes = +data.yes;
+    data.no = +data.no;
+
+    drawBinarySlider(this, data);
+  });
+}
+
+/*
+  INITIALIZE
+*/
+
 drawBarCharts();
+drawBinarySliders();
+
+/*
+  RESIZE
+*/
 
 var resizeId;
 d3.select(window).on('resize', function(){
