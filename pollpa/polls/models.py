@@ -56,15 +56,15 @@ class Poll(models.Model):
             return "vote"
 
         # Check whether the poll is closed but the user has voted
-        if self.closes < timezone.now() and user_has_voted:
+        if user_has_voted:
             return "results"
 
         # Check whether the poll is closed but the user has not voted
-        if self.closes < timezone.now() and not user_has_voted:
+        if not user_has_voted:
             return "wait"
 
         # All states should be covered
-        raise Exception()
+        raise Exception("unknown state")
 
 class AuthToken(models.Model):
     username = models.TextField()
