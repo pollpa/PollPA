@@ -7,48 +7,15 @@ from .models import Poll
 
 from .models import Profile
 
+
 def index(request):
     return render(request, 'polls/index.html', {})
 
+
 def poll(request, poll_id):
+    poll_obj = get_object_or_404(Poll, id=poll_id)
     return render(request, 'polls/poll.html', {
-        "poll": {
-            "poll_id": poll_id,
-            "completed": True,
-            "questions": [{
-                "title": "Question 1 (Checkbox)?",
-                "description": "Testing",
-                "type": "checkbox",
-                "options": [{
-                    "title": "a",
-                    "description": "This is a description."
-                },
-                {
-                    "title": "b",
-                    "description": ""
-                },
-                {
-                    "title": "c",
-                    "description": ""
-                }]
-            },
-            {
-                "title": "Question 2 (Radio)?",
-                "description": "Testing",
-                "type": "radio",
-                "options": [{
-                    "title": "a",
-                    "description": ""
-                },
-                {
-                    "title": "b",
-                    "description": "This is a description"
-                },
-                {
-                    "title": "c",
-                    "description": ""
-                }]
-            }],
+        "poll": poll_obj,
             "responses": [{
                 "title": "Question 1 (Checkbox)?",
                 "description": "Testing",
@@ -95,8 +62,7 @@ def poll(request, poll_id):
                     "y": 300
                 }]
             }]
-        }
-    })
+        })
 
 def _logout(request):
     logout(request)

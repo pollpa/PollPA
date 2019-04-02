@@ -2,19 +2,19 @@
 {% load static %}
 
 {% block header %}
-<header class="default">
-  <h1 class="title is-size-2">{{poll.title}}</h1>
-  <p class="subtitle">{{poll.description}}</p>
-</header>
+  <header class="default">
+    <h1 class="title is-size-2">{{poll.title}}</h1>
+    <p class="subtitle">{{poll.description}}</p>
+  </header>
 {% endblock %}
 
 {% block content %}
 <section id="poll" class="columns">
   <div class="column is-2">
     {% if poll.completed %}
-    <span class="tag is-medium is-danger level-item">Poll Closed</span><br>
+      <span class="tag is-medium is-danger level-item">Poll Closed</span><br>
     {% else %}
-    <span class="tag is-medium is-success level-item">10hr left</span><br>
+      <span class="tag is-medium is-success level-item">10hr left</span><br>
     {% endif %}
     <br>
     <p class="heading">Launched</p>
@@ -23,29 +23,29 @@
     <p class="heading">Responses</p>
     <p>{{poll.votes|length}}</p>
   </div>
-  <div class="column is-10" id = "questions">
+  <div class="column is-10" id="questions">
     {% if poll.completed %}
       {% for response in poll.responses %}
-          <h2 class = "is-size-4 title">{{response.title}}</h2>
-          <p class = "subtitle is-size-5">{{response.description}}</p>
+      <h2 class="is-size-4 title">{{response.title}}</h2>
+      <p class="subtitle is-size-5">{{response.description}}</p>
 
-          {% if response.graph == "bar" %}
-            {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
-          {% elif response.graph == "binary-slider" %}
-            {% include "polls/graphs/binary-slider.html" with data=response.data %}
-          {% elif response.graph == "pie" %}
-            {% include "polls/graphs/pie.html" with data=response.data ylabel=response.ylabel  %}
-          {% endif %}
-          <br>
-          <br>
-        {% endfor %}
+      {% if response.graph == "bar" %}
+        {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
+      {% elif response.graph == "binary-slider" %}
+        {% include "polls/graphs/binary-slider.html" with data=response.data %}
+      {% elif response.graph == "pie" %}
+        {% include "polls/graphs/pie.html" with data=response.data ylabel=response.ylabel  %}
+      {% endif %}
+      <br>
+      <br>
+      {% endfor %}
     {% else %}
     <form action="/poll/{{poll.id}}/">
-    {% for question in poll.questions %}
-    {% include 'polls/question.html' with question=question %}
-    <button type="submit" class="button is-primary">Vote</button>
+      {% for question in poll.questions %}
+        {% include 'polls/question.html' with question=question %}
+      {% endfor %}
+      <button type="submit" class="button is-primary">Vote</button>
     </form>
-    {% endfor %}
     {% endif %}
   </div>
 </section>
