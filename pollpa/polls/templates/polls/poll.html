@@ -40,10 +40,11 @@
           <br>
         {% endfor %}
     {% else %}
-    not completed
+    <form action="/poll/{{poll.id}}/">
     {% for question in poll.questions %}
-    question
     {% include 'polls/question.html' with question=question %}
+    <button type="submit" class="button is-primary">Vote</button>
+    </form>
     {% endfor %}
     {% endif %}
   </div>
@@ -51,8 +52,8 @@
 {% endblock %}
 
 {% block scripts %}
-  {% if poll.completed %}
-    <script src = "https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
-    <script src = "{% static 'JS/poll.js' %}"></script>
-  {% endif %}
+{% if completed %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+<script src="{% static 'JS/poll.js' %}"></script>
+{% endif %}
 {% endblock %}
