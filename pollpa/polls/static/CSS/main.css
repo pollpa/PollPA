@@ -133,6 +133,24 @@ footer {
     padding: 4px 6px;
     border: 1px solid black; }
 
+.binary-slider {
+  width: 100%;
+  border: 1px solid black;
+  white-space: nowrap; }
+
+.half {
+  display: inline-block;
+  height: 100%;
+  text-align: center;
+  padding: 7px; }
+  .half .heading {
+    font-weight: bold;
+    margin-bottom: -5px; }
+
+.yes-half {
+  background: #2980b9;
+  color: white; }
+
 #info {
   background: #f9f9f9;
   margin: 0;

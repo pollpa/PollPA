@@ -12,61 +12,72 @@ def index(request):
 
 def poll(request, poll_id):
     return render(request, 'polls/poll.html', {
-        "poll_id": poll_id,
-        "completed": True,
-        "questions": [{
-            "title": "Question 1 (Checkbox)?",
-            "description": "Testing",
-            "type": "checkbox",
-            "options": [{
-                "title": "a",
-                "description": "This is a description."
+        "poll": {
+            "poll_id": poll_id,
+            "completed": True,
+            "questions": [{
+                "title": "Question 1 (Checkbox)?",
+                "description": "Testing",
+                "type": "checkbox",
+                "options": [{
+                    "title": "a",
+                    "description": "This is a description."
+                },
+                {
+                    "title": "b",
+                    "description": ""
+                },
+                {
+                    "title": "c",
+                    "description": ""
+                }]
             },
             {
-                "title": "b",
-                "description": ""
+                "title": "Question 2 (Radio)?",
+                "description": "Testing",
+                "type": "radio",
+                "options": [{
+                    "title": "a",
+                    "description": ""
+                },
+                {
+                    "title": "b",
+                    "description": "This is a description"
+                },
+                {
+                    "title": "c",
+                    "description": ""
+                }]
+            }],
+            "responses": [{
+                "title": "Question 1 (Checkbox)?",
+                "description": "Testing",
+                "graph": "bar",
+                "xlabel": "Options",
+                "ylabel": "Values",
+                "data": [{
+                    "x": "a",
+                    "y": 100
+                },
+                {
+                    "x": "b",
+                    "y": 45
+                },
+                {
+                    "x": "c",
+                    "y": 300
+                }]
             },
             {
-                "title": "c",
-                "description": ""
+                "title": "Question 2 (Slider)?",
+                "description": "Testing",
+                "graph": "binary-slider",
+                "data": {
+                    "yes": 100,
+                    "no": 50
+                }
             }]
-        },
-        {
-            "title": "Question 2 (Radio)?",
-            "description": "Testing",
-            "type": "radio",
-            "options": [{
-                "title": "a",
-                "description": ""
-            },
-            {
-                "title": "b",
-                "description": "This is a description"
-            },
-            {
-                "title": "c",
-                "description": ""
-            }]
-        }],
-        "responses": [{
-            "title": "Question 1 (Checkbox)?",
-            "description": "Testing",
-            "graph": "bar",
-            "xlabel": "Options",
-            "ylabel": "Values",
-            "data": [{
-                "x": "a",
-                "y": 100
-            },
-            {
-                "x": "b",
-                "y": 45
-            },
-            {
-                "x": "c",
-                "y": 300
-            }]
-        }]
+        }
     })
 
 def _logout(request):

@@ -23,18 +23,20 @@
     <p class="heading">Responses</p>
     <p>{{poll.votes|length}}</p>
   </div>
-  <div class="column is-10">
+  <div class="column is-10" id = "questions">
     {% if poll.completed %}
-    {% for response in responses %}
-    <h2 class="is-size-4 title">{{response.title}}</h2>
-    <p class="subtitle is-size-5">{{response.description}}</p>
+      {% for response in poll.responses %}
+          <h2 class = "is-size-4 title">{{response.title}}</h2>
+          <p class = "subtitle is-size-5">{{response.description}}</p>
 
-    {% if response.graph == "bar" %}
-    {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
-    {% endif %}
-    <br>
-    <br>
-    {% endfor %}
+          {% if response.graph == "bar" %}
+            {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
+          {% elif response.graph == "binary-slider" %}
+            {% include "polls/graphs/binary-slider.html" with data=response.data %}
+          {% endif %}
+          <br>
+          <br>
+        {% endfor %}
     {% else %}
     <form action="/poll/{{poll.id}}/">
     {% for question in poll.questions %}

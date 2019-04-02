@@ -1,0 +1,22 @@
+.binary-slider{
+  width: 100%;
+  border: 1px solid black;
+  white-space: nowrap;
+}
+
+.half{
+  display: inline-block;
+  height: 100%;
+  text-align: center;
+  padding: 7px;
+
+  .heading{
+    font-weight: bold;
+    margin-bottom: -5px;
+  }
+}
+
+.yes-half{
+  background: $blue;
+  color: white;
+}
