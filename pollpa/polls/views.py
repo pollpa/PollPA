@@ -76,6 +76,24 @@ def poll(request, poll_id):
                     "yes": 100,
                     "no": 50
                 }
+            }, {
+                "title": "Question 3 (Pie Chart)?",
+                "description": "Testing",
+                "graph": "pie",
+                "xlabel": "Options",
+                "ylabel": "Values",
+                "data": [{
+                    "x": "a",
+                    "y": 100
+                },
+                {
+                    "x": "b",
+                    "y": 45
+                },
+                {
+                    "x": "c",
+                    "y": 300
+                }]
             }]
         }
     })

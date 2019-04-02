@@ -26,7 +26,7 @@ h1, h2, h3, h4, h5, h6 {
   color: white !important; }
 
 .is-blue {
-  background-color: #2980b9 !important;
+  background-color: #003c7f !important;
   color: white !important; }
 
 a {
@@ -41,11 +41,11 @@ a.light {
   display: none; }
 
 nav {
-  background: #2980b9;
+  background: #4b6cb7;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);
+  background: -webkit-linear-gradient(to right, #182848, #4b6cb7);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2c3e50, #2980b9);
+  background: linear-gradient(to right, #182848, #4b6cb7);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   padding: 14px 36px;
   color: white;
@@ -83,11 +83,11 @@ header.default {
     margin-bottom: 16px; }
 
 header.jumbo {
-  background: #2980b9;
+  background: #4b6cb7;
   /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #2c3e50, #2980b9);
+  background: -webkit-linear-gradient(to right, #182848, #4b6cb7);
   /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #2c3e50, #2980b9);
+  background: linear-gradient(to right, #182848, #4b6cb7);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   height: 80vh; }
   header.jumbo .title, header.jumbo .subtitle {
@@ -118,7 +118,7 @@ footer {
   width: 100%; }
 
 .bar {
-  fill: #2980b9; }
+  fill: #003c7f; }
 
 .bar-chart {
   position: relative; }
@@ -132,6 +132,9 @@ footer {
     background: white;
     padding: 4px 6px;
     border: 1px solid black; }
+
+.pie-chart {
+  text-align: center; }
 
 .binary-slider {
   width: 100%;
@@ -148,7 +151,7 @@ footer {
     margin-bottom: -5px; }
 
 .yes-half {
-  background: #2980b9;
+  background: #003c7f;
   color: white; }
 
 #info {
