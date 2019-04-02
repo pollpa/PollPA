@@ -23,9 +23,9 @@
     <p class="heading">Responses</p>
     <p>{{poll.votes|length}}</p>
   </div>
-  <div class="column is-10">
+  <div class="column is-10" id = "questions">
     {% if poll.completed %}
-    {% for response in responses %}
+      {% for response in poll.responses %}
           <h2 class = "is-size-4 title">{{response.title}}</h2>
           <p class = "subtitle is-size-5">{{response.description}}</p>
 
@@ -49,7 +49,7 @@
 {% endblock %}
 
 {% block scripts %}
-  {% if completed %}
+  {% if poll.completed %}
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
     <script src = "{% static 'JS/poll.js' %}"></script>
   {% endif %}
