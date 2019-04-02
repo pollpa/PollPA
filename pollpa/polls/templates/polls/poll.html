@@ -28,7 +28,7 @@
     <p>{{poll.votes|length}}</p>
   </div>
   <div class="column is-10" id="questions">
-    {% if poll.completed %}
+    {% if state == "results" %}
       {% for response in poll.responses %}
       <h2 class="is-size-4 title">{{response.title}}</h2>
       <p class="subtitle is-size-5">{{response.description}}</p>
@@ -43,13 +43,30 @@
       <br>
       <br>
       {% endfor %}
-    {% else %}
-    <form action="/poll/{{poll.id}}/">
-      {% for question in poll.questions %}
-        {% include 'polls/question.html' with question=question %}
-      {% endfor %}
-      <button type="submit" class="button is-primary">Vote</button>
-    </form>
+    {% elif state == "vote" %}
+      <form action="/poll/{{poll.id}}/" method="post">
+        {% csrf_token %}
+        {% for question in poll.questions %}
+          {% include 'polls/question.html' with question=question %}
+        {% endfor %}
+        <button type="submit" class="button is-primary">Vote</button>
+      </form>
+    {% elif state == "authenticate" %}
+      <div class="notification is-warning">
+        <p>
+        <strong>You must be logged in to see this page!</strong>
+        This poll is not yet public. If you want to interact with this poll, you'll need to log in or create an account first.
+        </p>
+        <a class="button is-info" href="{% url 'register' %}">Create New Account</a>
+        <a class="button is-info" href="{% url 'login' %}">Log In</a>
+      </div>
+    {% elif state == "wait" %}
+      <div class="notification is-warning">
+        <p>
+        <strong>You'll need to wait!</strong>
+        You didn't vote in this poll, so you can't see its results until they become public on {{poll.public}}.
+        </p>
+      </div>
     {% endif %}
   </div>
 </section>

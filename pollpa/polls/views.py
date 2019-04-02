@@ -1,9 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404, HttpResponseNotAllowed
 from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
-from .models import Poll
+from datetime import datetime
+from .models import Poll, QuestionOption, VoteFingerprint, Vote
 
 from .models import Profile
 
@@ -14,8 +15,38 @@ def index(request):
 
 def poll(request, poll_id):
     poll_obj = get_object_or_404(Poll, id=poll_id)
+    
+    state = poll_obj.state(request)
+
+    error = None
+
+    # Check if this is a vote submission
+    if request.method == "POST" and state == "vote":
+        print(request.POST)
+        post_keys = request.POST.keys()
+        vote_ids = [int(key[5:]) for key in post_keys if key.startswith("vote-")]
+        selections = [QuestionOption.objects.get(id=vote) for vote in vote_ids]
+
+        # Verify selections belong to this poll
+        for selection in selections:
+            if selection.question.poll != poll_obj:
+                return HttpResponseNotAllowed()
+
+        # Push vote markers into database
+        VoteFingerprint.objects.create(poll=poll_obj, user=request.user)
+        vote = Vote.objects.create(poll=poll_obj, grade=request.user.grade)
+        for selection in selections:
+            VoteChoice.objects.create(vote=vote, question=selection.question, choice=selection)
+
+        # Recalculate state
+        state = poll_obj.state(request)
+
+    print(state)
+
     return render(request, 'polls/poll.html', {
         "poll": poll_obj,
+        "error": error,
+        "state": state,
             "responses": [{
                 "title": "Question 1 (Checkbox)?",
                 "description": "Testing",
