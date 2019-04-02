@@ -52,8 +52,8 @@
 {% endblock %}
 
 {% block scripts %}
-{% if completed %}
-<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
-<script src="{% static 'JS/poll.js' %}"></script>
-{% endif %}
+  {% if poll.completed %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
+    <script src="{% static 'JS/poll.js' %}"></script>
+  {% endif %}
 {% endblock %}

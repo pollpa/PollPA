@@ -117,8 +117,12 @@ footer {
   bottom: 0;
   width: 100%; }
 
-.bar {
-  fill: #003c7f; }
+.tooltip {
+  position: absolute;
+  white-space: nowrap;
+  background: white;
+  padding: 4px 6px;
+  border: 1px solid black; }
 
 .bar-chart {
   position: relative; }
@@ -126,15 +130,12 @@ footer {
     font-size: 14px; }
   .bar-chart .label {
     font-weight: bold; }
-  .bar-chart .tooltip {
-    position: absolute;
-    white-space: nowrap;
-    background: white;
-    padding: 4px 6px;
-    border: 1px solid black; }
 
 .pie-chart {
-  text-align: center; }
+  text-align: center;
+  position: relative; }
+  .pie-chart .tooltip {
+    text-align: left; }
 
 .binary-slider {
   width: 100%;

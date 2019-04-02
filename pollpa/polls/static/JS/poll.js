@@ -1,3 +1,6 @@
+var blue = "#003c7f";
+var lighterBlue = d3.color(blue).brighter(0.5).hex();
+
 /*
   Bar Chart
 */
@@ -29,6 +32,7 @@ function drawBarChart(currentThis, data){
   svg.selectAll(".bar")
       .data(data)
     .enter().append("rect")
+      .style("fill", blue)
       .attr("class", "bar")
       .attr("x", function(d) { return x(d.x); })
       .attr("width", x.bandwidth())
@@ -40,6 +44,7 @@ function drawBarChart(currentThis, data){
       tooltip = d3.select(currentThis).select(".tooltip");
 
   svg.selectAll(".bar").on("mousemove", function(d){
+    d3.select(this).style("fill", lighterBlue);
     mouse = d3.mouse(currentThis);
 
     tooltipText = "<strong>" + d.x + "</strong><br>" + currentThis.dataset.ylabel + ": " + d.y;
@@ -49,6 +54,7 @@ function drawBarChart(currentThis, data){
       .style("top", mouse[1] - tooltip.node().offsetHeight - 12 + "px");
   })
   .on("mouseout", function(d){
+    d3.select(this).style("fill", blue);
     tooltip.classed("hidden", true);
   });
 
@@ -98,7 +104,9 @@ function drawPieChart(currentThis, data){
       height = radius * 2,
       width = radius * 2;
 
-  // var colors =
+  var colors = d3.scaleLinear().domain([0, data.length])
+    .interpolate(d3.interpolateHcl)
+    .range(["white", blue]);
 
   var pie = d3.pie()
     .value(function(d){
@@ -109,7 +117,10 @@ function drawPieChart(currentThis, data){
     .outerRadius(radius)
     .innerRadius(radius / 1.7);
 
-  // Add Pie
+  var mouse,
+      tooltip = d3.select(currentThis).select(".tooltip"),
+      tooltipText;
+
   var pieChart = d3.select(currentThis).select("svg")
     .attr("width", width)
     .attr("height", height)
@@ -118,21 +129,25 @@ function drawPieChart(currentThis, data){
       .selectAll("path").data(pie(data))
       .enter().append("path")
         .attr("fill", function(d, i){
-          return "blue";
+          return colors(i + 1);
         })
         .attr("stroke", "white")
         .attr("d", arc)
-        .on("mousemove", function(d){
-          // mouse = d3.mouse(currentThis);
-          //
-          // tooltip.style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
-          //   .style("top", mouse[1] - Math.round(tooltip.node().offsetHeight) - 12 + "px");
-          //
-          // d3.select(this).style("fill", d3.rgb(d3.color(d.data.color).brighter(0.5)));
+        .on("mouseover", function(d, i){
+          d3.select(this).attr("fill", d3.color(colors(i + 1)).brighter(0.5).hex());
         })
-        .on("mouseout", function(d){
-          // tooltip.classed("hidden", true);
-          // d3.select(this).style("fill", d.color);
+        .on("mousemove", function(d){
+          mouse = d3.mouse(currentThis);
+
+          tooltipText = "<strong>" + d.data.x + "</strong><br>" + currentThis.dataset.ylabel + ": " + d.data.y;
+          tooltip.classed("hidden", false)
+            .html(tooltipText)
+            .style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
+            .style("top", mouse[1] - Math.round(tooltip.node().offsetHeight) - 12 + "px");
+        })
+        .on("mouseout", function(d, i){
+          d3.select(this).attr("fill", colors(i + 1));
+          tooltip.classed("hidden", true);
         });
 
   //Add labels underneath pie chart
