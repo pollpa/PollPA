@@ -1,5 +1,9 @@
-.bar{
-  fill: $blue;
+.tooltip{
+  position: absolute;
+  white-space: nowrap;
+  background: white;
+  padding: 4px 6px;
+  border: 1px solid black;
 }
 
 .bar-chart{
@@ -11,13 +15,5 @@
 
   .label{
     font-weight: bold;
-  }
-
-  .tooltip{
-    position: absolute;
-    white-space: nowrap;
-    background: white;
-    padding: 4px 6px;
-    border: 1px solid black;
   }
 }
