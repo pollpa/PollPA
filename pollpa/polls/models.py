@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.crypto import get_random_string
-from datetime import datetime
+from django.utils import timezone
 
 class Poll(models.Model):
     id = models.AutoField(primary_key=True)
@@ -21,16 +21,50 @@ class Poll(models.Model):
         return Vote.objects.filter(poll=self)
 
     @property
+    def fingerprints(self):
+        return VoteFingerprint.objects.filter(poll=self)
+
+    @property
     def is_completed(self):
-        return datetime.utcnow() > self.closes
+        return timezone.now() > self.closes
 
     @property
     def is_public(self):
-        return datetime.utcnow() > self.public
+        return timezone.now() > self.public
 
     @property
     def is_available(self):
-        return datetime.utcnow() > self.available
+        return timezone.now() > self.available
+
+    def state(self, request):
+        # Make sure the poll is available _or_ the user is a superuser
+        if not (self.available < timezone.now() or request.user.is_superuser):
+            raise Http404()
+
+        # Check whether the results are public
+        if self.public < timezone.now():
+            return "results"
+
+        # All other states require authentication
+        if not request.user.is_authenticated:
+            return "authenticate"
+
+        user_has_voted = VoteFingerprint.objects.filter(poll=self, user=request.user).count() > 0
+
+        # Check whether voting is in progress and the user can vote
+        if self.available < timezone.now() and not user_has_voted and self.closes > timezone.now():
+            return "vote"
+
+        # Check whether the poll is closed but the user has voted
+        if self.closes < timezone.now() and user_has_voted:
+            return "results"
+
+        # Check whether the poll is closed but the user has not voted
+        if self.closes < timezone.now() and not user_has_voted:
+            return "wait"
+
+        # All states should be covered
+        raise Exception()
 
 class AuthToken(models.Model):
     username = models.TextField()
@@ -40,7 +74,7 @@ class AuthToken(models.Model):
     single_use = models.BooleanField(default=True)
 
     def get_user_and_activate(self):
-        if self.expires > datetime.utcnow():
+        if self.expires > timezone.now():
             return None
         user = User.objects.get(username=self.username)
         if user == None:

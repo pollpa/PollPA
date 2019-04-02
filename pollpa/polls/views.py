@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from datetime import datetime
 from .models import Poll
 
 from .models import Profile
@@ -14,8 +15,12 @@ def index(request):
 
 def poll(request, poll_id):
     poll_obj = get_object_or_404(Poll, id=poll_id)
+    
+    state = poll_obj.state(request)
+
     return render(request, 'polls/poll.html', {
         "poll": poll_obj,
+        "state": state,
             "responses": [{
                 "title": "Question 1 (Checkbox)?",
                 "description": "Testing",
