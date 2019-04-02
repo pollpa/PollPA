@@ -11,6 +11,7 @@ def index(request):
     return render(request, 'polls/index.html', {})
 
 def poll(request, poll_id):
+    poll_obj = get_object_or_404(Poll, id=poll_id)
     return render(request, 'polls/poll.html', {
         "poll": {
             "poll_id": poll_id,
