@@ -2,30 +2,30 @@
 {% load static %}
 
 {% block header %}
-  <header class = "default">
-    <h1 class = "title is-size-2">Poll Title</h1>
-    <p class = "subtitle">Poll description should go here</p>
-  </header>
+<header class="default">
+  <h1 class="title is-size-2">{{poll.title}}</h1>
+  <p class="subtitle">{{poll.description}}</p>
+</header>
 {% endblock %}
 
 {% block content %}
-  <section id = "poll" class = "columns">
-    <div class = "column is-2">
-      {% if completed %}
-        <span class = "tag is-medium is-red level-item">Poll Closed</span><br>
-      {% else %}
-        <span class = "tag is-medium is-green level-item">10hr left</span><br>
-      {% endif %}
-      <br>
-      <p class = "heading">CREATION DATE</p>
-      <p>1/11/19</p>
-      <br>
-      <p class = "heading">RESPONSES</p>
-      <p>139</p>
-    </div>
-    <div id = "questions" class = "column is-10">
-      {% if completed %}
-        {% for response in responses %}
+<section id="poll" class="columns">
+  <div class="column is-2">
+    {% if poll.completed %}
+    <span class="tag is-medium is-danger level-item">Poll Closed</span><br>
+    {% else %}
+    <span class="tag is-medium is-success level-item">10hr left</span><br>
+    {% endif %}
+    <br>
+    <p class="heading">Launched</p>
+    <p>{{poll.available}}</p>
+    <br>
+    <p class="heading">Responses</p>
+    <p>{{poll.votes|length}}</p>
+  </div>
+  <div class="column is-10">
+    {% if poll.completed %}
+    {% for response in responses %}
           <h2 class = "is-size-4 title">{{response.title}}</h2>
           <p class = "subtitle is-size-5">{{response.description}}</p>
 
@@ -37,13 +37,15 @@
           <br>
           <br>
         {% endfor %}
-      {% else %}
-        {% for question in questions %}
-          {% include "polls/question.html" with question=question %}
-        {% endfor %}
-      {% endif %}
-    </div>
-  </section>
+    {% else %}
+    not completed
+    {% for question in poll.questions %}
+    question
+    {% include 'polls/question.html' with question=question %}
+    {% endfor %}
+    {% endif %}
+  </div>
+</section>
 {% endblock %}
 
 {% block scripts %}

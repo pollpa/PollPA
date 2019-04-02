@@ -1,19 +1,19 @@
-<a class = "column box poll-box {{class}}" href = "/poll/{{id}}">
-  <h3 class = "is-size-4">{{title}}</h3>
-  <p class = "is-size-5">{{description}}</p>
+<a class="column box poll-box {{class}}" href="/poll/{{id}}">
+  <h3 class="is-size-4">{{poll.title}}</h3>
+  <p class="is-size-5">{{poll.description}}</p>
 
-  <div class = "level badges is-mobile">
-    <div class = "level-left">
-      {% if completed %}
-        <span class = "tag is-red level-item">Poll Closed</span>
-        <span class = "tag level-item">139 Responses</span>
+  <div class="level badges is-mobile">
+    <div class="level-left">
+      {% if poll.completed %}
+      <span class="tag is-red level-item">Poll Closed</span>
+      <span class="tag level-item">{{poll.votes|length}} Responses</span>
       {% else %}
-        <span class = "tag is-green level-item">10hr left</span>
+      <span class="tag is-green level-item">10hr left</span>
       {% endif %}
     </div>
 
-    <div class = "level-right">
-      <p class = "level-item">Posted on 1/11/19</p>
+    <div class="level-right">
+      <p class="level-item">Posted on 1/11/19</p>
     </div>
   </div>
 
