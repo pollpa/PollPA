@@ -32,41 +32,25 @@ function drawBarChart(currentThis, data){
       .attr("class", "bar")
       .attr("x", function(d) { return x(d.x); })
       .attr("width", x.bandwidth())
-      .style("fill", "blue")
       .attr("y", function(d) { return y(d.y); })
       .attr("height", function(d) { return height - y(d.y); });
 
-  var mouse;
+  // Tooltip
+  var mouse,
+      tooltip = d3.select(currentThis).select(".tooltip");
 
-  //Labels for mouseover
-  // svg.selectAll(".bar").on("mouseover", function(d, i){
-  //   if(className == "barchart-grouped"){
-  //     if(isPercentageChart) tooltipText = "<h4>" + d.label + ": " + currentThis.dataset.labels.split(",")[d.key] + "</h4><p><strong>" + d.value.toFixed(1) + "%</strong></p>";
-  //     else tooltipText = generateTooltip({title: d.label + ": " +  currentThis.dataset.labels.split(",")[d.key], responses: d.value, percentage: d.value / total});
-  //   }
-  //   else{
-  //     if(isPercentageChart) tooltipText = "<h4>" + d.label + "</h4><p><strong>" + d.y.toFixed(1) + "%</strong></p>";
-  //     else tooltipText = generateTooltip({title: d.label, responses: d.y, percentage: d.y / total});
-  //   }
-  //   tooltip.classed("hidden", false).html(tooltipText);
-  //
-  //   if(className == "barchart-horizontal" || className == "barchart-vertical") d3.select(this).style("fill", d3.rgb(d3.color(accent).brighter(0.5)));
-  //
-  //   mouse = d3.mouse(currentThis);
-  //   tooltip.style("left", mouse[0] - tooltip.node().offsetWidth / 2.0 + "px")
-  //     .style("top", mouse[1] - tooltip.node().offsetHeight - 12 + "px");
-  // })
-  // .on("mousemove", function(d){
-  //   mouse = d3.mouse(currentThis);
-  //   tooltip.style("left", mouse[0] - tooltip.node().offsetWidth / 2.0 + "px")
-  //     .style("top", mouse[1] - tooltip.node().offsetHeight - 12 + "px");
-  // })
-  // .on("mouseout", function(d){
-  //   //if(d3.event.toElement.parentNode.className.indexOf("tooltip") == -1){
-  //     tooltip.classed("hidden", true);
-  //   //}
-  //   d3.select(this).style("fill", accent);
-  // });
+  svg.selectAll(".bar").on("mousemove", function(d){
+    mouse = d3.mouse(currentThis);
+
+    tooltipText = "<strong>" + d.x + "</strong><br>" + currentThis.dataset.ylabel + ": " + d.y;
+    tooltip.html(tooltipText)
+      .classed("hidden", false)
+      .style("left", mouse[0] - tooltip.node().offsetWidth / 2.0 + "px")
+      .style("top", mouse[1] - tooltip.node().offsetHeight - 12 + "px");
+  })
+  .on("mouseout", function(d){
+    tooltip.classed("hidden", true);
+  });
 
   // Add X Axis
   svg.append("g")
@@ -80,6 +64,7 @@ function drawBarChart(currentThis, data){
   //Labels
   svg.append("text")
     .attr("transform", "rotate(-90)")
+    .attr("class", "label")
     .attr("y", -1 * margin.left)
     .attr("x", 0 - (height / 2))
     .attr("dy", "1em")
@@ -88,6 +73,7 @@ function drawBarChart(currentThis, data){
 
   svg.append("text")
     .attr("transform", "translate(" + (width / 2) + " ," + (height + margin.top + 20) + ")")
+    .attr("class", "label")
     .style("text-anchor", "middle")
     .text(currentThis.dataset.xlabel);
 }

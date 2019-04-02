@@ -37,6 +37,9 @@ a.light {
   a.light:hover {
     color: #f9f9f9; }
 
+.hidden {
+  display: none; }
+
 nav {
   background: #2980b9;
   /* fallback for old browsers */
@@ -113,6 +116,22 @@ footer {
   position: absolute;
   bottom: 0;
   width: 100%; }
+
+.bar {
+  fill: #2980b9; }
+
+.bar-chart {
+  position: relative; }
+  .bar-chart .tick {
+    font-size: 14px; }
+  .bar-chart .label {
+    font-weight: bold; }
+  .bar-chart .tooltip {
+    position: absolute;
+    white-space: nowrap;
+    background: white;
+    padding: 4px 6px;
+    border: 1px solid black; }
 
 #info {
   background: #f9f9f9;
