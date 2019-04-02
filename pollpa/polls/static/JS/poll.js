@@ -89,6 +89,77 @@ function drawBarCharts(){
 }
 
 /*
+  Pie Chart
+*/
+
+function drawPieChart(currentThis, data){
+  var margin = {top: 20, right: 20, bottom: 50, left: 60},
+      radius = 150,
+      height = radius * 2,
+      width = radius * 2;
+
+  // var colors =
+
+  var pie = d3.pie()
+    .value(function(d){
+      return d.y;
+    }).sort(null);
+
+  var arc = d3.arc()
+    .outerRadius(radius)
+    .innerRadius(radius / 1.7);
+
+  // Add Pie
+  var pieChart = d3.select(currentThis).select("svg")
+    .attr("width", width)
+    .attr("height", height)
+    .append("g")
+      .attr("transform", "translate(" + (width - radius) + "," + (height - radius) + ")")
+      .selectAll("path").data(pie(data))
+      .enter().append("path")
+        .attr("fill", function(d, i){
+          return "blue";
+        })
+        .attr("stroke", "white")
+        .attr("d", arc)
+        .on("mousemove", function(d){
+          // mouse = d3.mouse(currentThis);
+          //
+          // tooltip.style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
+          //   .style("top", mouse[1] - Math.round(tooltip.node().offsetHeight) - 12 + "px");
+          //
+          // d3.select(this).style("fill", d3.rgb(d3.color(d.data.color).brighter(0.5)));
+        })
+        .on("mouseout", function(d){
+          // tooltip.classed("hidden", true);
+          // d3.select(this).style("fill", d.color);
+        });
+
+  //Add labels underneath pie chart
+  // var pieLabel = d3.select(this).append("div")
+  //   .attr("class", "pie-label")
+  //   .style("width", width + "px");
+  //
+  // if(name) pieLabel.append("h3").html(name);
+  //
+  // pieLabel.selectAll("span").data(piedata)
+  //   .enter().append("span")
+  //     .html(function(d, i){
+  //       return "<div class = 'bubble' style = 'background:" + d.color + "'></div>" + d.label;
+  //     }).append("br");
+}
+
+function drawPieCharts(){
+  d3.selectAll(".pie-chart").each(function(d, i){
+    var data = JSON.parse(this.dataset.values.replace(/'/g, "\""));
+    data.forEach(function(d){
+      return +d.y;
+    });
+    drawPieChart(this, data);
+  });
+}
+
+/*
   Binary Slider
 */
 
@@ -97,8 +168,6 @@ function drawBinarySlider(currentThis, data){
   var total = data.yes + data.no,
       yes = 100 * data.yes / total,
       no = 100 * data.no / total;
-
-  console.log(slider.select(".yes-half"));
 
   slider.select(".yes-half")
     .style("width", Math.floor(yes) + "%")
@@ -124,6 +193,7 @@ function drawBinarySliders(){
 */
 
 drawBarCharts();
+drawPieCharts();
 drawBinarySliders();
 
 /*
