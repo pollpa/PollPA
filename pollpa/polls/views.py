@@ -11,7 +11,63 @@ def index(request):
     return render(request, 'polls/index.html', {})
 
 def poll(request, poll_id):
-    return render(request, 'polls/poll.html', {"poll": get_object_or_404(Poll, id=poll_id)})
+    return render(request, 'polls/poll.html', {
+        "poll_id": poll_id,
+        "completed": True,
+        "questions": [{
+            "title": "Question 1 (Checkbox)?",
+            "description": "Testing",
+            "type": "checkbox",
+            "options": [{
+                "title": "a",
+                "description": "This is a description."
+            },
+            {
+                "title": "b",
+                "description": ""
+            },
+            {
+                "title": "c",
+                "description": ""
+            }]
+        },
+        {
+            "title": "Question 2 (Radio)?",
+            "description": "Testing",
+            "type": "radio",
+            "options": [{
+                "title": "a",
+                "description": ""
+            },
+            {
+                "title": "b",
+                "description": "This is a description"
+            },
+            {
+                "title": "c",
+                "description": ""
+            }]
+        }],
+        "responses": [{
+            "title": "Question 1 (Checkbox)?",
+            "description": "Testing",
+            "graph": "bar",
+            "xlabel": "Options",
+            "ylabel": "Values",
+            "data": [{
+                "x": "a",
+                "y": 100
+            },
+            {
+                "x": "b",
+                "y": 45
+            },
+            {
+                "x": "c",
+                "y": 300
+            }]
+        }]
+    })
 
 def _logout(request):
     logout(request)
@@ -64,3 +120,6 @@ def reset(request):
 
 def account(request):
     return render(request, 'polls/account.html', {})
+
+def suggest(request):
+    return render(request, 'polls/suggest.html', {})

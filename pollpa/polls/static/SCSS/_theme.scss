@@ -68,3 +68,8 @@ a.light{
     color: $light-gray;
   }
 }
+
+// Helpers
+.hidden{
+  display: none;
+}
