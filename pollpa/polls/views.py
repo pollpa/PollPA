@@ -46,6 +46,25 @@ def poll(request, poll_id):
                 "title": "c",
                 "description": ""
             }]
+        }],
+        "responses": [{
+            "title": "Question 1 (Checkbox)?",
+            "description": "Testing",
+            "graph": "bar",
+            "xlabel": "Options",
+            "ylabel": "Values",
+            "data": [{
+                "x": "a",
+                "y": 100
+            },
+            {
+                "x": "b",
+                "y": 45
+            },
+            {
+                "x": "c",
+                "y": 300
+            }]
         }]
     })
 

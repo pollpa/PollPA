@@ -3,6 +3,8 @@
 @import "poll-box";
 @import "header";
 @import "footer";
+@import "charts/bars";
+@import "charts/pie";
 
 #info{
   background: $light-gray;

@@ -23,11 +23,15 @@
       <p class = "heading">RESPONSES</p>
       <p>139</p>
     </div>
-    <div class = "column is-10">
+    <div id = "questions" class = "column is-10">
       {% if completed %}
-        {% for question in questions %}
-          <h2 class = "is-size-4 title">{{question.title}}</h2>
-          <p class = "subtitle is-size-5">{{question.description}}</p>
+        {% for response in responses %}
+          <h2 class = "is-size-4 title">{{response.title}}</h2>
+          <p class = "subtitle is-size-5">{{response.description}}</p>
+
+          {% if response.graph == "bar" %}
+            {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
+          {% endif %}
           <br>
           <br>
         {% endfor %}
