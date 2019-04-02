@@ -10,6 +10,14 @@ class Poll(models.Model):
     text = models.TextField()
     description = models.TextField()
 
+    @property
+    def questions(self):
+        return Question.objects.filter(poll=self)
+
+    @property
+    def votes(self):
+        return Vote.objects.filter(poll=self)
+
 class AuthToken(models.Model):
     username = models.TextField()
     identifier = models.TextField(unique=True)
@@ -49,6 +57,10 @@ class Question(models.Model):
     text = models.TextField()
     description = models.TextField()
 
+    @property
+    def options(self):
+        return QuestionOption.objects.filter(question=self)
+
 class QuestionOption(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.TextField()
@@ -57,7 +69,7 @@ class QuestionOption(models.Model):
 class Vote(models.Model):
     created = models.DateTimeField(auto_now_add=True, db_index=True)
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
-    year = models.IntegerField()
+    grade = models.IntegerField()
 
 class VoteChoice(models.Model):
     vote = models.ForeignKey(Vote, on_delete=models.CASCADE)
