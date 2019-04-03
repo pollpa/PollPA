@@ -21,8 +21,8 @@
         <a class="navbar-item has-text-warning has-text-weight-bold" href="/admin">Admin</a>
         {% endif %}
         {% if request.user.is_authenticated %}
-        <a class="navbar-item" href="/suggest">Suggest</a>
-        <a class="navbar-item" href="/">Vote</a>
+        <a class="navbar-item" href="{% url 'suggest' %}">Suggest</a>
+        <a class="navbar-item" href="{% url 'latest' %}">Latest</a>
         <a class="navbar-item" href="{% url 'account' %}">Account</a>
         {% else %}
         <a class="navbar-item has-text-weight-bold" href="{% url 'login' %}">Log In</a>
