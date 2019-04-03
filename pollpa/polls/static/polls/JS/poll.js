@@ -49,13 +49,13 @@ function drawBarChart(currentThis, data){
 
     tooltipText = "<strong>" + d.x + "</strong><br>" + currentThis.dataset.ylabel + ": " + d.y;
     tooltip.html(tooltipText)
-      .classed("hidden", false)
+      .classed("is-hidden", false)
       .style("left", mouse[0] - tooltip.node().offsetWidth / 2.0 + "px")
       .style("top", mouse[1] - tooltip.node().offsetHeight - 12 + "px");
   })
   .on("mouseout", function(d){
     d3.select(this).style("fill", blue);
-    tooltip.classed("hidden", true);
+    tooltip.classed("is-hidden", true);
   });
 
   // Add X Axis
@@ -140,14 +140,14 @@ function drawPieChart(currentThis, data){
           mouse = d3.mouse(currentThis);
 
           tooltipText = "<strong>" + d.data.x + "</strong><br>" + currentThis.dataset.ylabel + ": " + d.data.y;
-          tooltip.classed("hidden", false)
+          tooltip.classed("is-hidden", false)
             .html(tooltipText)
             .style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
             .style("top", mouse[1] - Math.round(tooltip.node().offsetHeight) - 12 + "px");
         })
         .on("mouseout", function(d, i){
           d3.select(this).attr("fill", colors(i + 1));
-          tooltip.classed("hidden", true);
+          tooltip.classed("is-hidden", true);
         });
 
   //Add labels underneath pie chart
