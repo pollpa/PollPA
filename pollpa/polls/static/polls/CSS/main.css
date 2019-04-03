@@ -5,9 +5,8 @@ nav {
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #182848, #4b6cb7);
   /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  padding: 14px 36px;
-  color: white;
-  margin: 0 !important; }
+  padding-top: 8px;
+  padding-bottom: 8px; }
 
 nav a:hover {
   background-color: inherit !important; }
@@ -28,25 +27,11 @@ nav a:hover {
   #index-hero .title, #index-hero .subtitle {
     color: white; }
 
-html,
-body {
-  height: 100%; }
+.wrapper {
+  min-height: calc(100vh - 150px) !important; }
 
-#wrapper {
-  min-height: 100%;
-  position: relative; }
-
-footer {
-  background: #f9f9f9;
-  padding: 28px 36px;
-  position: absolute;
-  bottom: 0;
-  width: 100%; }
-
-.footer-placeholder {
-  padding: 28px 36px;
-  position: relative;
-  width: 100%; }
+.foot {
+  background-color: #f9f9f9; }
 
 .tooltip {
   position: absolute;

@@ -1,23 +1,7 @@
-html,
-body {
- height: 100%;
+.wrapper {
+  min-height: calc(100vh - 150px) !important;
 }
 
-#wrapper {
-   min-height: 100%;
-   position:relative;
-}
-
-footer{
-  background: $light-gray;
-  padding: 2 * $padding-top $padding-left;
-  position: absolute;
-  bottom:0;
-  width:100%;
-}
-
-.footer-placeholder {
-  padding: 2 * $padding-top $padding-left;
-  position: relative;
-  width:100%;
+.foot {
+  background-color: $light-gray;
 }
