@@ -3,11 +3,11 @@
 {% block header %}
   <header class = "jumbo columns is-vcentered">
     <div class = "column is-half">
-      <h1 class = "title is-size-2">Big Title</h1>
-      <p class = "subtitle">Nisi labore mollit consequat eiusmod enim nostrud deserunt eu anim proident voluptate.</p>
+      <h1 class = "title is-size-2">Let's talk about what matters.</h1>
+      <p class = "subtitle">Phillips Academy is a complex place. PollPA lets you share your voice — and understand what others are thinking. New polls every Monday, Wednesday, and Friday at 5pm.</p>
       <a class = "button" href = "">Get Started</a>
     </div>
-    {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=True id=12243 %}
+    {% include "polls/poll-box.html" with poll=polls|first %}
   </header>
 {% endblock %}
 
@@ -48,9 +48,9 @@
     </div">
 
     <div class="columns is-multiline is-centered">
-      {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=False id=12243 class="is-narrow" %}
-      {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=True id=143525 class="is-narrow" %}
-      {% include "polls/poll-box.html" with title="Poll Title" description="This is a description." completed=True id=143525 class="is-narrow" %}
+      {% for poll in polls %}
+        {% include "polls/poll-box.html" with poll=poll %}
+      {% endfor %}
     </div>
   </section>
 {% endblock %}
