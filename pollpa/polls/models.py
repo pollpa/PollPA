@@ -73,25 +73,6 @@ class Poll(models.Model):
     def time_left(self):
         return self.closes - timezone.now()
 
-class AuthToken(models.Model):
-    username = models.TextField()
-    identifier = models.TextField(unique=True)
-    expires = models.DateTimeField()
-    metadata = models.TextField(default="{}")
-    single_use = models.BooleanField(default=True)
-
-    def get_user_and_activate(self):
-        if self.expires > timezone.now():
-            return None
-        user = User.objects.get(username=self.username)
-        if user == None:
-            password = get_random_string()
-            user = User.objects.create_user(self.username, email=self.username, password=password)
-            # TODO: send signup email
-        if self.single_use:
-            self.delete()
-        return user
-
 """ Supplement model for custom user data. Think of it as a user's settings. """
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
@@ -140,3 +121,24 @@ class VoteChoice(models.Model):
     vote = models.ForeignKey(Vote, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice = models.ForeignKey(QuestionOption, on_delete=models.CASCADE)
+
+class AuthToken(models.Model):
+    username = models.TextField()
+    identifier = models.TextField(unique=True)
+    expires = models.DateTimeField()
+    grade = models.IntegerField()
+    single_use = models.BooleanField(default=True)
+
+    def get_user_and_activate(self):
+        if self.expires < timezone.now():
+            return None
+        users = User.objects.filter(username=self.username)
+        if users.count() == 0:
+            password = get_random_string()
+            user = User.objects.create_user(self.username, email=self.username, password=password)
+            Profile.objects.create(grade=self.grade, user=user)
+            return user
+            # TODO: send signup email
+        if self.single_use:
+            self.delete()
+        return users[0]
