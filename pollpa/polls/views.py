@@ -12,7 +12,8 @@ from .models import Profile
 def index(request):
     polls = Poll.objects.all().order_by("-closes")
     return render(request, 'polls/index.html', {
-        "polls": polls
+        "polls": polls,
+        "most_recent_poll_id": polls[0].id
     })
 
 
