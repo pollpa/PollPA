@@ -69,7 +69,7 @@
 {% endblock %}
 
 {% block scripts %}
-  {% if poll.completed %}
+  {% if state == "results" %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.js"></script>
     <script src="{% static 'JS/poll.js' %}"></script>
   {% endif %}
