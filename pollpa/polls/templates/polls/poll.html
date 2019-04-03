@@ -38,7 +38,7 @@
   {% if state != "vote" %}
   <div class="column is-3">
     <div class="tags">
-      {% if poll.is_closed %}      
+      {% if poll.is_closed %}
         <span class="tag is-medium is-warning level-item">Poll closed</span>
       {% else %}
         <span class="tag is-medium is-link level-item">Closes {{poll.closes|naturaltime}}</span>
@@ -67,7 +67,7 @@
     {% if state == "results" %}
       {% for response in responses %}
         <h2 class="is-size-4 title">{{response.title}}</h2>
-        <p class="subtitle is-size-5">{{response.description}}&nbsp;</p>
+        {% if response.description %}<p class="subtitle is-size-5">{{response.description}}&nbsp;</p> {% endif %}
 
         {% if response.graph == "bar" %}
           {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}

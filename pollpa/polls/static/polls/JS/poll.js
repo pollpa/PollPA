@@ -174,15 +174,26 @@ function drawPieCharts(){
   });
 }
 
+/*DATA should be formatted as {
+  "all": [{
+    "x": "label",
+    "y": 0
+  }],
+  "2019": [],
+  "2020": [],
+  "2021": [],
+  "2022": [],
+}*/
+
 /*
   Binary Slider
 */
 
 function drawBinarySlider(currentThis, data){
   var slider = d3.select(currentThis);
-  var total = data.yes + data.no,
-      yes = 100 * data.yes / total,
-      no = 100 * data.no / total;
+  var total = data[0].y + data[0].y,
+      yes = 100 * data[0].y / total,
+      no = 100 * data[1].y / total;
 
   slider.select(".yes-half")
     .style("width", Math.floor(yes) + "%")
@@ -196,8 +207,9 @@ function drawBinarySlider(currentThis, data){
 function drawBinarySliders(){
   d3.selectAll(".binary-slider").each(function(d, i){
     var data = JSON.parse(this.dataset.values.replace(/'/g, "\""));
-    data.yes = +data.yes;
-    data.no = +data.no;
+    data.forEach(function(d){
+      return +d.y;
+    });
 
     drawBinarySlider(this, data);
   });
@@ -210,6 +222,31 @@ function drawBinarySliders(){
 drawBarCharts();
 drawPieCharts();
 drawBinarySliders();
+
+/*
+  FILTER DATA
+*/
+
+function filterData(current, parent, flag){
+  // Set active
+  d3.select(current.parentNode).selectAll("*").classed("is-active", false);
+  d3.select(current).classed("is-active", true);
+
+  var chart = d3.select(parent),
+      chartType = chart.attr("class").split(" ")[0];
+
+  switch(chartType){
+    case "bar-chart":
+      drawBarChart(parent, data);
+      break;
+    case "binary-slider":
+      drawBinarySlider(parent, data);
+      break;
+    case "pie-chart":
+      drawPieChart(parent, data);
+      break;
+  }
+}
 
 /*
   RESIZE
