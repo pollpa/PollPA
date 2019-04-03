@@ -20,24 +20,17 @@
 {% endblock %}
 
 {% block content %}
-<form action="/suggest" method="post">
-  <!-- {% csrf_token %}
-  <div class="field has-addons">
-    <p class="control is-expanded">
-      <input class="input" type="text" name="email" placeholder="Email">
-    </p>
-    <p class="control">
-      <a class="button is-static">
-        @andover.edu
-      </a>
-    </p>
-  </div>
-  <div class="field">
-    <p class="control"><input class="input" type="password" name="password" placeholder="Password" /></p>
-  </div>
+<form action="/suggest/" method="post">
+  {% if submitted %}
+    <div class="notification is-success">
+      <strong>Thanks for submitting!</strong> A question curator will review it shortly. You will be notified via email if your suggestion is eventually used.
+    </div>
+  {% endif %}
+  {% csrf_token %}
+  <textarea class="textarea" placeholder="Enter your suggestion here..." name="text"></textarea>
+  <br>
+  <p>Please keep in mind that we review many suggestions, and are not able to respond to each one individually. Rest assured that we will read each and every one.</p>
   <br>
   <input class="button is-link light" type="submit" />
-  <a class = "button is-link is-outlined" href="{% url 'register' %}">Create New Account</a>
-  <a class = "button is-link is-outlined" href="{% url 'reset' %}">Reset Password</a> -->
 </form>
 {% endblock %}
