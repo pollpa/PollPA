@@ -12,6 +12,10 @@ class Poll(models.Model):
     title = models.TextField()
     description = models.TextField(blank=True)
 
+    def __str__(self):
+        
+        return self.title + " (%s)" % self.timeline()
+
     @property
     def questions(self):
         return Question.objects.filter(poll=self)
@@ -39,6 +43,18 @@ class Poll(models.Model):
     @property
     def is_closed(self):
         return timezone.now() > self.closes
+
+    def timeline(self):
+        if timezone.now() < self.available:
+            return "pending"
+
+        if timezone.now() < self.closes:
+            return "open"
+
+        if timezone.now() < self.public:
+            return "closed"
+
+        return "public"
 
     def state(self, request):
         # Make sure the poll is available _or_ the user is a superuser
@@ -83,9 +99,15 @@ class Profile(models.Model):
     def from_user(user):
         return Profile.objects.get(user=user)
 
+    def __str__(self):
+        return self.user.email
+
 class Suggestion(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
+
+    def __str__(self):
+        return 'Suggestion by ' + self.user.email
 
 """ Indicates _whether_ a user has voted. Does not contain the vote
  itself. This allows votes to be truthfully and absolutely separated
@@ -95,6 +117,9 @@ class Suggestion(models.Model):
 class VoteFingerprint(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'Vote on ' + self.poll.title + " by " + self.user.email
 
 class Question(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
@@ -107,21 +132,33 @@ class Question(models.Model):
     def options(self):
         return QuestionOption.objects.filter(question=self).order_by("sorting_key")
 
+    def __str__(self):
+        return '%s (%s)' % (self.text, str(self.poll.title))
+
 class QuestionOption(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.TextField()
     description = models.TextField(blank=True)
     sorting_key = models.FloatField(default=0)
 
+    def __str__(self):
+        return '%s (%s)' % (self.text, str(self.question.text))
+
 class Vote(models.Model):
     created = models.DateTimeField(auto_now_add=True, db_index=True)
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)
     grade = models.IntegerField()
 
+    def __str__(self):
+        return 'Vote on %s' % (self.poll.title)
+
 class VoteChoice(models.Model):
     vote = models.ForeignKey(Vote, on_delete=models.CASCADE)
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     choice = models.ForeignKey(QuestionOption, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return 'Vote for %s (%s - %s)' % (self.choice.text, self.question.text, self.poll.title)
 
 class AuthToken(models.Model):
     username = models.TextField()
@@ -143,3 +180,9 @@ class AuthToken(models.Model):
         if self.single_use:
             self.delete()
         return users[0]
+    
+    def __str__(self):
+        if self.single_use:
+            return '%s (single-use)' % (self.username)
+        else:
+            return '%s' % (self.username)
