@@ -9,6 +9,8 @@ urlpatterns = [
     path('register/', views.register, name='register'),
     path('reset/', views.reset, name='reset'),
     path('logout/', views._logout, name="logout"),
+    path('superlogout/', views._logout, name="superlogout"),
     path('account/', views.account, name="account"),
-    path('suggest/', views.suggest, name="suggest")
+    path('suggest/', views.suggest, name="suggest"),
+    path('latest/', views.latest, name="latest"),
 ]
