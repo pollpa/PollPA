@@ -6,7 +6,7 @@
 {% endblock %}
 
 {% block body %}
-<div id="wrapper">
+<div class="wrapper">
   <!-- NAV -->
   {% include "polls/nav.html" %}
 
@@ -28,9 +28,9 @@
       {% endblock %}
     </div>
   </section>
-
-  <!-- FOOTER -->
-  <div class="footer-placeholder">
-  {% include "polls/footer.html" %}
 </div>
+
+<!-- FOOTER -->
+<div class="footer-placeholder"></div>
+{% include "polls/footer.html" %}
 {% endblock %}
