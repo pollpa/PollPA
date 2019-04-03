@@ -1,21 +1,33 @@
-<nav class="level is-mobile">
-  <!-- Left side -->
-  <div class="level-left">
-    <a href = "/" class = "light"><h1 class = "is-size-4"><i class = "fas fa-vote-yea"></i>&nbsp;&nbsp;PollPA</h1></a>
-  </div>
-
-  <!-- Right side -->
-  <!-- TODO: update this nav based on user status -->
-  <div class="level-right">
-    {% if request.user.is_superuser %}
-    <p class="level-item"><a href = "/admin" class = "button is-small is-danger">Admin</a></p>
-    {% endif %}
-    <p class="level-item"><a href = "/suggest" class = "light">Suggest</a></p>
-    {% if request.user.is_authenticated %}
-    <p class="level-item"><a href = "/" class = "light">Vote</a></p>
-    <p class="level-item"><a href = "{% url 'account' %}" class = "light">Account</a></p>
-    {% else %}
-    <p class="level-item"><a href = "{% url 'login' %}" class = "light">Log In</a></p>
-    {% endif %}
+<nav class="navbar is-dark is-mobile">
+  <div class="container">
+    <div class="navbar-brand">
+        <a href = "/" class = "navbar-item">
+          <h1 class = "is-size-4">
+            <i class = "fas fa-vote-yea">
+          </i>
+          &nbsp;&nbsp;
+          PollPA
+        </h1>
+      </a>
+      <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-end">
+        {% if request.user.is_superuser %}
+        <a class="navbar-item" href = "/admin" class = "button is-small is-danger">Admin</a>
+        {% endif %}
+        <a class="navbar-item" href = "/suggest" class = "light">Suggest</a>
+        {% if request.user.is_authenticated %}
+        <a class="navbar-item" href = "/" class = "light">Vote</a>
+        <a class="navbar-item" href = "{% url 'account' %}" class = "light">Account</a>
+        {% else %}
+        <a class="navbar-item" href = "{% url 'login' %}" class = "light">Log In</a>
+        {% endif %}
+      </div>
+    </div>
   </div>
 </nav>

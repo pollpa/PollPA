@@ -14,15 +14,20 @@
   {% block header %}
   {% endblock %}
 
-  {% if error %}
-  <div class="notification is-danger">
-    {{error}}
-  </div>
-  {% endif %}
-
-  <!-- CONTENT -->
-  {% block content %}
-  {% endblock %}
+  <section class="section">
+    <div class="container">
+      <!-- ERROR -->
+      {% if error %}
+        <div class="notification is-danger">
+          {{error}}
+        </div>
+      {% endif %}
+    
+      <!-- CONTENT -->
+      {% block content %}
+      {% endblock %}
+    </div>
+  </section>
 
   <!-- FOOTER -->
   {% include "polls/footer.html" %}

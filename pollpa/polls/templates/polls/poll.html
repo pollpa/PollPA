@@ -6,10 +6,18 @@
 {% endblock %}
 
 {% block header %}
-  <header class="default">
-    <h1 class="title is-size-2">{{poll.title}}</h1>
-    <p class="subtitle">{{poll.description}}</p>
-  </header>
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        {{poll.title}}
+      </h1>
+      <h2 class="subtitle">
+        {{poll.description}}
+      </h2>
+    </div>
+  </div>
+</section>
 {% endblock %}
 
 {% block content %}

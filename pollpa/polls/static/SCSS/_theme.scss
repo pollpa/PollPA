@@ -1,38 +1,3 @@
-// FONTS
-
-@font-face {
-  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
-  font-family: "IBM Plex Sans";
-}
-
-@font-face {
-  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
-  font-family: "IBM Plex Sans";
-  font-weight: bold;
-}
-
-@font-face {
-  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Italic.ttf");
-  font-family: "IBM Plex Sans";
-  font-style: italic;
-}
-
-@font-face {
-  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-BoldItalic.ttf");
-  font-family: "IBM Plex Sans";
-  font-style: italic;
-  font-weight: bold;
-}
-
-// h1,h2,h3,h4,h5,h6,p,li,a{
-//   font-family: "IBM Plex Sans";
-// }
-
-h1,h2,h3,h4,h5,h6{
-  font-weight: bold;
-}
-
-// Spacing
 $padding-top: 14px;
 $padding-left: 36px;
 
@@ -41,35 +6,3 @@ $light-gray: #f9f9f9;
 $green: #3fc380;
 $red: #d24d57;
 $blue: #003c7f;
-
-.is-green{
-  background-color: $green !important;
-  color: white !important;
-}
-
-.is-red{
-  background-color: $red !important;
-  color: white !important;
-}
-
-.is-blue{
-  background-color: $blue !important;
-  color: white !important;
-}
-
-// Text
-a{
-  transition: 0.2s all;
-}
-
-a.light{
-  color: white;
-  &:hover{
-    color: $light-gray;
-  }
-}
-
-// Helpers
-.hidden{
-  display: none;
-}

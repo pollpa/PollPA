@@ -1,60 +1,73 @@
 {% extends 'polls/content.html' %}
 
 {% block title %}
-  <title>PollPA</title>
+<title>PollPA</title>
 {% endblock %}
 
 {% block header %}
-  <header class = "jumbo columns is-vcentered">
-    <div class = "column is-half">
-      <h1 class = "title is-size-2">Let's talk about what matters.</h1>
-      <p class = "subtitle">Phillips Academy is a complex place. PollPA lets you share your voice — and understand what others are thinking. New polls every Monday, Wednesday, and Friday at 5pm.</p>
-      <a class = "button" href = "">Get Started</a>
+<section class="hero is-medium" id="index-hero">
+  <div class="hero-body">
+    <div class="container">
+      <div class="columns">
+        <div class="column is-6">
+          <h1 class="title is-size-2">Let's talk about what matters.</h1>
+          <p class="subtitle">Phillips Academy is a complex place. PollPA lets you share your voice — and understand
+            what others are thinking. New polls every Monday, Wednesday, and Friday at 5pm.</p>
+          <a class="button is-success is-medium" href="">Get Started</a>
+        </div>
+        <div class="column is-offset-1 is-5">
+          {% include "polls/poll-box.html" with poll=polls|first %}
+        </div>
+      </div>
     </div>
-    {% include "polls/poll-box.html" with poll=polls|first %}
-  </header>
+  </div>
+</section>
+<section id="info">
+  <div class="container">
+    <div class="columns">
+      <div class="column has-text-centered">
+        <div>
+          <i class="fas fa-user-secret is-size-3"></i>
+          <p class="heading is-size-6">Anonymous</p>
+          <p>
+            Eiusmod consectetur enim ex cillum culpa proident qui tempor proident. Pariatur minim tempor qui minim id
+            consectetur cillum ipsum labore excepteur.
+          </p>
+        </div>
+      </div>
+      <div class="column has-text-centered">
+        <div>
+          <i class="fas fa-bolt is-size-3"></i>
+          <p class="heading is-size-6">Instant</p>
+          <p>
+            Dolore occaecat ullamco elit sint consectetur aliquip ex fugiat cillum cupidatat officia excepteur.
+          </p>
+        </div>
+      </div>
+      <div class="column has-text-centered">
+        <div>
+          <i class="fas fa-chart-pie is-size-3"></i>
+          <p class="heading is-size-6">Informative</p>
+          <p>
+            Ea pariatur magna dolor adipisicing consequat anim nisi magna sit proident ut eiusmod aliquip nulla sunt
+            aute officia.
+          </p>
+        </div>
+      </div>
+    </div>
+</section>
 {% endblock %}
 
 {% block content %}
-  <section id = "info" class="level">
-    <div class="level-item has-text-centered">
-      <div>
-        <i class = "fas fa-user-secret is-size-3"></i>
-        <p class="heading is-size-6">Anonymous</p>
-        <p>
-          Eiusmod consectetur enim ex cillum culpa proident qui tempor proident. Pariatur minim tempor qui minim id consectetur cillum ipsum labore excepteur.
-        </p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <i class = "fas fa-bolt is-size-3"></i>
-        <p class="heading is-size-6">Instant</p>
-        <p>
-          Dolore occaecat ullamco elit sint consectetur aliquip ex fugiat cillum cupidatat officia excepteur.
-        </p>
-      </div>
-    </div>
-    <div class="level-item has-text-centered">
-      <div>
-        <i class = "fas fa-chart-pie is-size-3"></i>
-        <p class="heading is-size-6">Informative</p>
-        <p>
-           Ea pariatur magna dolor adipisicing consequat anim nisi magna sit proident ut eiusmod aliquip nulla sunt aute officia.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id = "polls">
-    <div class = "has-text-centered">
-      <h2 class = "is-size-5 heading">All Polls</h2>
+<section id="polls">
+  <div class="has-text-centered">
+    <h2 class="is-size-5 heading">All Polls</h2>
     </div">
 
-    <div class="columns is-multiline is-centered">
+    <div class="flex-poll-view is-multiline is-centered">
       {% for poll in polls %}
-        {% include "polls/poll-box.html" with poll=poll %}
+      {% include "polls/poll-box.html" with poll=poll %}
       {% endfor %}
     </div>
-  </section>
+</section>
 {% endblock %}

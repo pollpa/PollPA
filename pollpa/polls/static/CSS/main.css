@@ -1,45 +1,3 @@
-@font-face {
-  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Regular.ttf");
-  font-family: "IBM Plex Sans"; }
-@font-face {
-  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Bold.ttf");
-  font-family: "IBM Plex Sans";
-  font-weight: bold; }
-@font-face {
-  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-Italic.ttf");
-  font-family: "IBM Plex Sans";
-  font-style: italic; }
-@font-face {
-  src: url("../assets/fonts/IBM_Plex_Sans/IBMPlexSans-BoldItalic.ttf");
-  font-family: "IBM Plex Sans";
-  font-style: italic;
-  font-weight: bold; }
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold; }
-
-.is-green {
-  background-color: #3fc380 !important;
-  color: white !important; }
-
-.is-red {
-  background-color: #d24d57 !important;
-  color: white !important; }
-
-.is-blue {
-  background-color: #003c7f !important;
-  color: white !important; }
-
-a {
-  transition: 0.2s all; }
-
-a.light {
-  color: white; }
-  a.light:hover {
-    color: #f9f9f9; }
-
-.hidden {
-  display: none; }
-
 nav {
   background: #4b6cb7;
   /* fallback for old browsers */
@@ -51,56 +9,18 @@ nav {
   color: white;
   margin: 0 !important; }
 
-.poll-box {
-  width: 350px;
-  height: 150px;
-  margin: 12px;
-  text-align: left;
-  padding: 20px;
-  position: relative; }
-  .poll-box h3 {
-    line-height: 1.5rem; }
-  .poll-box p.is-size-5 {
-    margin-bottom: 6px; }
-  .poll-box .badges {
-    position: absolute;
-    bottom: 20px;
-    width: calc(100% - 40px); }
-  .poll-box .level-left .level-item:not(:last-child) {
-    margin-right: .5rem; }
-  .poll-box .level-right p {
-    font-size: 0.8rem; }
+nav a:hover {
+  background-color: inherit !important; }
 
-header {
-  padding: 14px 36px;
-  margin: 0 !important; }
-
-header.default {
-  padding-top: 42px;
-  padding-bottom: 42px;
-  background-color: #f9f9f9; }
-  header.default .title {
-    margin-bottom: 16px; }
-
-header.jumbo {
+#index-hero {
   background: #4b6cb7;
   /* fallback for old browsers */
   background: -webkit-linear-gradient(to right, #182848, #4b6cb7);
   /* Chrome 10-25, Safari 5.1-6 */
   background: linear-gradient(to right, #182848, #4b6cb7);
-  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  height: 80vh; }
-  header.jumbo .title, header.jumbo .subtitle {
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+  #index-hero .title, #index-hero .subtitle {
     color: white; }
-  header.jumbo .column {
-    transform: translateY(-21px); }
-  header.jumbo .column:first-child {
-    padding: 0;
-    padding-right: 20px; }
-  header.jumbo .poll-box {
-    width: 100%;
-    margin: 0;
-    box-shadow: none; }
 
 html,
 body {
