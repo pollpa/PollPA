@@ -32,3 +32,16 @@
 form {
   max-width: 40rem;
 }
+
+.is-hidden {
+  display: none;
+}
+
+.is-pulled-bottom {
+  bottom: 0px;
+  position: static;
+}
+
+.box {
+  height: unset;
+}
