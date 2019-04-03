@@ -66,6 +66,9 @@ class Poll(models.Model):
         # All states should be covered
         raise Exception("unknown state")
 
+    def time_left(self):
+        return self.closes - timezone.now()
+
 class AuthToken(models.Model):
     username = models.TextField()
     identifier = models.TextField(unique=True)
