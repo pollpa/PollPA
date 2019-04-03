@@ -52,6 +52,20 @@ nav a:hover {
   position: relative; }
   .pie-chart .tooltip {
     text-align: left; }
+  .pie-chart .column {
+    margin-top: 10px; }
+  .pie-chart svg {
+    padding: 0; }
+
+.pie-label {
+  text-align: left; }
+
+.bubble {
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  display: inline-block;
+  margin-right: 8px; }
 
 .binary-slider {
   width: 100%;
