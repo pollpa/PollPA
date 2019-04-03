@@ -208,31 +208,6 @@ drawPieCharts();
 drawBinarySliders();
 
 /*
-  FILTER DATA
-*/
-
-function filterData(current, parent, flag){
-  // Set active
-  d3.select(current.parentNode).selectAll("*").classed("is-active", false);
-  d3.select(current).classed("is-active", true);
-
-  var chart = d3.select(parent),
-      chartType = chart.attr("class").split(" ")[0];
-
-  switch(chartType){
-    case "bar-chart":
-      drawBarChart(parent, data);
-      break;
-    case "binary-slider":
-      drawBinarySlider(parent, data);
-      break;
-    case "pie-chart":
-      drawPieChart(parent, data);
-      break;
-  }
-}
-
-/*
   RESIZE
 */
 
