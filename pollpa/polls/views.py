@@ -7,6 +7,7 @@ from django.contrib.auth.models import User
 from datetime import datetime
 from .models import Poll, QuestionOption, VoteFingerprint, Vote, VoteChoice, Suggestion, AuthToken
 from .models import Profile
+from django.db.models import Count
 
 
 def index(request):
@@ -26,6 +27,10 @@ def poll(request, poll_id):
     validation = {
         "status": None,
         "text": None
+    }
+
+    filter_settings = {
+        "grade": "all"
     }
 
     # Check if this is a vote submission
@@ -90,6 +95,13 @@ def poll(request, poll_id):
 
     responses = None
     if state == "results":
+        filter_class = request.GET.get("filter", "all")
+        filter_settings["grade"] = filter_class
+        vote_choices = VoteChoice.objects.filter(question__poll = poll_obj)
+        if filter_class != "all":
+            vote_choices = vote_choices.filter(vote__grade=int(filter_class))
+        filter_settings["total"] = vote_choices.annotate(Count('vote', 
+                                         distinct=True)).count()
         responses = []
         for question in poll_obj.questions:
             q_response = {
@@ -98,7 +110,8 @@ def poll(request, poll_id):
                 "graph": question.chart,
                 "xlabel": "Responses",
                 "ylabel": "Count",
-                "data": [{"x": choice.text, "y": VoteChoice.objects.filter(question=question, choice=choice).count()} for choice in question.options]
+                "filter_settings": filter_settings,
+                "data": [{"x": choice.text, "y": vote_choices.filter(question=question, choice=choice).count()} for choice in question.options]
                 # TODO: make binary slider work
             }
             responses.append(q_response)
@@ -113,6 +126,8 @@ def poll(request, poll_id):
         "state": state,
         "responses": responses,
         "validation": validation,
+        "grades": ["2022", "2021", "2020", "2019"],
+        "filter_settings": filter_settings,
         "has_user_voted": has_user_voted
     })
 

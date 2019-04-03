@@ -65,6 +65,30 @@
   {% endif %}
   <div class="column is-8" id="questions">
     {% if state == "results" %}
+      <div class="tabs is-toggle is-centered">
+        <ul>
+          <li class="{% if filter_settings.grade == "all" %} is-active {% endif %}">
+            <a href="?filter=all">
+              <span>All Votes</span>
+            </a>
+          </li>
+          {% for grade in grades %}
+          <li class="{% if filter_settings.grade == grade %} is-active {% endif %}">
+            <a href="?filter={{grade}}">
+              <span>{{grade}}</span>
+            </a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      {% if filter_settings.grade != "all" %}
+        <div class="notification is-light">
+          <p>
+            Showing votes only from the class of <strong>{{filter_settings.grade}}</strong> ({{filter_settings.total}} votes). <a href="?filter=all">Clear filter.</a>
+          </p>
+        </div>
+      {% endif %}
       {% for response in responses %}
         <h2 class="is-size-4 title">{{response.title}}</h2>
         {% if response.description %}<p class="subtitle is-size-5">{{response.description}}&nbsp;</p> {% endif %}
