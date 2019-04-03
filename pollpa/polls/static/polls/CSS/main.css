@@ -43,6 +43,11 @@ footer {
   bottom: 0;
   width: 100%; }
 
+.footer-placeholder {
+  padding: 28px 36px;
+  position: relative;
+  width: 100%; }
+
 .tooltip {
   position: absolute;
   white-space: nowrap;

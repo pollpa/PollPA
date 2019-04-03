@@ -4,14 +4,20 @@ body {
 }
 
 #wrapper {
-   min-height:100%;
+   min-height: 100%;
    position:relative;
 }
 
 footer{
   background: $light-gray;
   padding: 2 * $padding-top $padding-left;
-  position:absolute;
+  position: absolute;
   bottom:0;
+  width:100%;
+}
+
+.footer-placeholder {
+  padding: 2 * $padding-top $padding-left;
+  position: relative;
   width:100%;
 }
