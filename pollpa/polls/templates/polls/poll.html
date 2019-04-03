@@ -1,6 +1,10 @@
 {% extends 'polls/content.html' %}
 {% load static %}
 
+{% block title %}
+  <title>{{poll.title}} • PollPA</title>
+{% endblock %}
+
 {% block header %}
   <header class="default">
     <h1 class="title is-size-2">{{poll.title}}</h1>
