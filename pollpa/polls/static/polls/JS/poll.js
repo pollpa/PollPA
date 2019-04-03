@@ -151,17 +151,12 @@ function drawPieChart(currentThis, data){
         });
 
   //Add labels underneath pie chart
-  // var pieLabel = d3.select(this).append("div")
-  //   .attr("class", "pie-label")
-  //   .style("width", width + "px");
-  //
-  // if(name) pieLabel.append("h3").html(name);
-  //
-  // pieLabel.selectAll("span").data(piedata)
-  //   .enter().append("span")
-  //     .html(function(d, i){
-  //       return "<div class = 'bubble' style = 'background:" + d.color + "'></div>" + d.label;
-  //     }).append("br");
+  var pieLabel = d3.select(currentThis).select(".pie-label").selectAll("span")
+    .data(data)
+    .enter().append("span")
+      .html(function(d, i){
+        return "<div class = 'bubble' style = 'background:" + colors(i + 1) + "'></div>" + d.x;
+      }).append("br");
 }
 
 function drawPieCharts(){
@@ -211,31 +206,6 @@ function drawBinarySliders(){
 drawBarCharts();
 drawPieCharts();
 drawBinarySliders();
-
-/*
-  FILTER DATA
-*/
-
-function filterData(current, parent, flag){
-  // Set active
-  d3.select(current.parentNode).selectAll("*").classed("is-active", false);
-  d3.select(current).classed("is-active", true);
-
-  var chart = d3.select(parent),
-      chartType = chart.attr("class").split(" ")[0];
-
-  switch(chartType){
-    case "bar-chart":
-      drawBarChart(parent, data);
-      break;
-    case "binary-slider":
-      drawBinarySlider(parent, data);
-      break;
-    case "pie-chart":
-      drawPieChart(parent, data);
-      break;
-  }
-}
 
 /*
   RESIZE

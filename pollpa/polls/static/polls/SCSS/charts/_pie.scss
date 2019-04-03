@@ -5,4 +5,24 @@
   .tooltip{
     text-align: left;
   }
+
+  .column{
+    margin-top: 10px;
+  }
+
+  svg{
+    padding: 0;
+  }
+}
+
+.pie-label{
+  text-align: left;
+}
+
+.bubble{
+  width: 15px;
+  height: 15px;
+  border-radius: 100%;
+  display: inline-block;
+  margin-right: 8px;
 }
