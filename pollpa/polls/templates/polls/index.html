@@ -72,8 +72,8 @@
   <div class="has-text-centered">
     <h2 class="is-size-5 heading">All Polls</h2>
   </div>
-
-  <div class="flex-poll-view is-multiline is-centered">
+  <br>
+  <div class="grid">
     {% for poll in polls %}
     {% include "polls/poll-box.html" with poll=poll %}
     {% endfor %}
