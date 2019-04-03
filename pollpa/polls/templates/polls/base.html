@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,9 +10,10 @@
 
   <!-- TODO: add google analytics -->
 
-  <link rel="shortcut icon" type="image/png" href="/static/favicon.png"/>
+  <link rel="shortcut icon" type="image/png" href="{% static 'polls/favicon.png'%}"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
   <link type = "text/css" rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css">
+  <script src="{% static 'polls/JS/navbar.js'%}"></script>
 
   {% block css %}{% endblock %}
   {% block title %}{% endblock %}
