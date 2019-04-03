@@ -1,14 +1,25 @@
-<h2 class="is-size-4 title">{{question.text}}</h2>
-<p class="subtitle is-size-5">{{question.description}}</p>
+<h5 class="is-size-5 title">{{question.text}}</h5>
+<p class="subtitle is-size-6">
+  {% if question.description %}
+    {{question.description}}
+  {% else %}
+    {% if question.kind == "MS" %}
+      You may select multiple options.
+    {% else %}
+      You may select only one option.
+    {% endif %}
+  {% endif %}
+</p>
 
 {% if question.kind == "MS" %}
 <div class="control">
   {% for option in question.options %}
   <label class="checkbox">
-    <input type="checkbox" name="vote-{{option.id}}">
+    <input type="checkbox" name="question-{{question.id}}" value="option-{{option.id}}">
     {{option.text}}
     {% if option.description %}
     <span>({{option.description}})</span>
+    {% else %}
     {% endif %}
   </label>
   <br>
@@ -18,7 +29,7 @@
 <div class="control">
   {% for option in question.options %}
   <label class="radio">
-    <input type="radio" name="vote-{{option.id}}">
+    <input type="radio" name="question-{{question.id}}" value="option-{{option.id}}">
     {{option.text}}
     {% if option.description %}
     <span>({{option.description}})</span>
@@ -28,3 +39,4 @@
   {% endfor %}
 </div>
 {% endif %}
+<hr>
