@@ -36,6 +36,10 @@ class Poll(models.Model):
     def is_available(self):
         return timezone.now() > self.available
 
+    @property
+    def is_closed(self):
+        return timezone.now() > self.closes
+
     def state(self, request):
         # Make sure the poll is available _or_ the user is a superuser
         if not (self.available < timezone.now() or request.user.is_superuser):
@@ -96,8 +100,11 @@ class Profile(models.Model):
 
     @staticmethod
     def from_user(user):
-        print(user)
         return Profile.objects.get(user=user)
+
+class Suggestion(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField()
 
 """ Indicates _whether_ a user has voted. Does not contain the vote
  itself. This allows votes to be truthfully and absolutely separated
