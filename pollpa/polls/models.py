@@ -105,12 +105,13 @@ class Question(models.Model):
 
     @property
     def options(self):
-        return QuestionOption.objects.filter(question=self)
+        return QuestionOption.objects.filter(question=self).order_by("sorting_key")
 
 class QuestionOption(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE)
     text = models.TextField()
     description = models.TextField(blank=True)
+    sorting_key = models.FloatField(default=0)
 
 class Vote(models.Model):
     created = models.DateTimeField(auto_now_add=True, db_index=True)
