@@ -74,4 +74,19 @@ nav a:hover {
 .medium-top-margin {
   margin-top: 15px !important; }
 
+@media screen and (min-width: 980px) {
+  .grid {
+    flex-flow: row wrap !important;
+    display: flex;
+    justify-content: space-around; }
+    .grid .poll-box {
+      max-width: 30%;
+      min-width: 350px;
+      margin-bottom: 24px; } }
+.figure-card {
+  width: 100%; }
+
+form {
+  max-width: 40rem; }
+
 /*# sourceMappingURL=main.css.map */
