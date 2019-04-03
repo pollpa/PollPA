@@ -1,21 +1,26 @@
 {% load humanize %}
 
 <a href="/poll/{{poll.id}}" class="box poll-box has-text-grey-dark">
-  <h3 class="is-size-4">{{poll.title}}</h3>
-  <p class="is-size-5">{{poll.description}}</p>
+  <div class="content">
+    <h3 class="is-size-4">{{poll.title}}</h3>
+    <p class="is-size-6">{{poll.description}}</p>
+  </div>
 
-  <div class="level badges is-mobile">
+  <div class="level is-mobile is-pulled-bottom">
     <div class="level-left">
       {% if poll.is_completed %}
-      <span class="tag is-danger level-item">Poll Closed</span>
-      <span class="tag level-item">{{poll.votes|length}} Responses</span>
+        <span class="tag is-danger level-item">Poll Closed</span>
+        <span class="tag level-item">{{poll.votes|length}} Responses</span>
       {% else %}
-      <span class="tag is-success level-item">Closes {{poll.closes|naturaltime}}</span>
+        <span class="tag is-success level-item">Closes {{poll.closes|naturaltime}}</span>
       {% endif %}
     </div>
-
     <div class="level-right">
-      <p class="level-item heading">Posted {{poll.available|naturalday}}</p>
+      {% if poll.is_public %}
+        <span class="tag is-primary level-item">Public</span>
+      {% else %}
+        <span class="tag is-warning level-item">Not Yet Public</span>
+      {% endif %}
     </div>
   </div>
 </a>
