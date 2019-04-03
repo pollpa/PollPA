@@ -1,5 +1,6 @@
 {% extends 'polls/content.html' %}
 {% load static %}
+{% load humanize %}
 
 {% block title %}
   <title>{{poll.title}} • PollPA</title>
@@ -21,25 +22,52 @@
 {% endblock %}
 
 {% block content %}
+{% if validation.status %}
+  {% if validation.status == "success" %}
+    <div class="notification is-success">
+      <strong>Success!</strong> {{validation.text}}
+    </div>
+  {% elif validation.status == "error" %}
+    <div class="notification is-danger">
+      <strong>Uh oh!</strong> {{validation.text}}
+    </div>
+  {% endif %}
+{% endif %}
+
 <section id="poll" class="columns">
-  <div class="column is-2">
-    {% if poll.completed %}
-      <span class="tag is-medium is-danger level-item">Poll Closed</span><br>
-    {% else %}
-      <span class="tag is-medium is-success level-item">10hr left</span><br>
-    {% endif %}
-    <br>
+  {% if state != "vote" %}
+  <div class="column is-3">
+    <div class="tags">
+      {% if poll.is_closed %}      
+        <span class="tag is-medium is-warning level-item">Poll Closed</span>
+      {% else %}
+        <span class="tag is-medium is-link level-item">Closes {{poll.closes|naturaltime}}</span>
+      {% endif %}
+      {% if has_user_voted %}
+        <span class="tag is-medium is-info level-item">You voted in this poll</span>
+      {% endif %}
+      {% if poll.is_public %}
+        <span class="tag is-medium is-primary level-item">Publicly available</span>
+      {% endif %}
+    </div>
     <p class="heading">Launched</p>
-    <p>{{poll.available}}</p>
+    <p>{{poll.available|naturalday|capfirst}}</p>
     <br>
-    <p class="heading">Responses</p>
-    <p>{{poll.votes|length}}</p>
+    <p class="heading">Closed</p>
+    <p>{{poll.available|naturalday|capfirst}}</p>
+    <br>
+    <p class="heading">Public Release</p>
+    <p>{{poll.public|naturalday|capfirst}}</p>
+    <br>
+    <p class="heading">Votes</p>
+    <p>{{poll.votes|length|intcomma}}</p>
   </div>
-  <div class="column is-10" id="questions">
+  {% endif %}
+  <div class="column is-8" id="questions">
     {% if state == "results" %}
       {% for response in responses %}
         <h2 class="is-size-4 title">{{response.title}}</h2>
-        <p class="subtitle is-size-5">{{response.description}}</p>
+        <p class="subtitle is-size-5">{{response.description}}&nbsp;</p>
 
         {% if response.graph == "bar" %}
           {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
@@ -48,7 +76,7 @@
         {% elif response.graph == "pie" %}
           {% include "polls/graphs/pie.html" with data=response.data ylabel=response.ylabel  %}
         {% endif %}
-        <br>
+        <hr>
         <br>
       {% endfor %}
     {% elif state == "vote" %}
@@ -57,22 +85,23 @@
         {% for question in poll.questions %}
           {% include 'polls/question.html' with question=question %}
         {% endfor %}
-        <button type="submit" class="button is-primary">Vote</button>
+        <button type="submit" class="button is-link is-large">Cast My Vote</button>
       </form>
     {% elif state == "authenticate" %}
       <div class="notification is-warning">
         <p>
-        <strong>You must be logged in to see this page!</strong>
-        This poll is not yet public. If you want to interact with this poll, you'll need to log in or create an account first.
+          <strong>You must be logged in to see this page!</strong>
+          This poll is not yet public. If you want to interact with this poll, you'll need to log in or create an account first.
         </p>
+        <br>
         <a class="button is-info" href="{% url 'register' %}">Create New Account</a>
         <a class="button is-info" href="{% url 'login' %}">Log In</a>
       </div>
     {% elif state == "wait" %}
       <div class="notification is-warning">
         <p>
-        <strong>You'll need to wait!</strong>
-        You didn't vote in this poll, so you can't see its results until they become public on {{poll.public}}.
+          <strong>You'll need to wait!</strong>
+          You didn't vote in this poll, so you can't see its results until they are publicly released ({{poll.public|naturalday}}).
         </p>
       </div>
     {% endif %}
