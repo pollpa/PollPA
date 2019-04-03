@@ -65,7 +65,7 @@
   {% endif %}
   <div class="column is-8" id="questions">
     {% if state == "results" %}
-      <div class="tabs">
+      <div class="tabs is-toggle is-centered">
         <ul>
           <li class="{% if filter_settings.grade == "all" %} is-active {% endif %}">
             <a href="?filter=all">
@@ -81,6 +81,7 @@
           {% endfor %}
         </ul>
       </div>
+      <br>
 
       {% if filter_settings.grade != "all" %}
         <div class="notification is-light">

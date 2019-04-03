@@ -100,8 +100,9 @@ def poll(request, poll_id):
         vote_choices = VoteChoice.objects.filter(question__poll = poll_obj)
         if filter_class != "all":
             vote_choices = vote_choices.filter(vote__grade=int(filter_class))
-        filter_settings["total"] = vote_choices.annotate(Count('vote', 
-                                         distinct=True)).count()
+            filter_settings["total"] = Vote.objects.filter(grade=int(filter_class), poll=poll_obj).count()
+        else:
+            filter_settings["total"] = Vote.objects.filter(poll=poll_obj).count()
         responses = []
         for question in poll_obj.questions:
             q_response = {
