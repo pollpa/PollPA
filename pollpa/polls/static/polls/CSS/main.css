@@ -1,0 +1,87 @@
+nav {
+  background: #4b6cb7;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #182848, #4b6cb7);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #182848, #4b6cb7);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  padding: 14px 36px;
+  color: white;
+  margin: 0 !important; }
+
+nav a:hover {
+  background-color: inherit !important; }
+
+.poll-box {
+  border-radius: 6px; }
+
+.box:hover {
+  border-color: blue !important; }
+
+#index-hero {
+  background: #4b6cb7;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #182848, #4b6cb7);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #182848, #4b6cb7);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */ }
+  #index-hero .title, #index-hero .subtitle {
+    color: white; }
+
+html,
+body {
+  height: 100%; }
+
+#wrapper {
+  min-height: 100%;
+  position: relative; }
+
+footer {
+  background: #f9f9f9;
+  padding: 28px 36px;
+  position: absolute;
+  bottom: 0;
+  width: 100%; }
+
+.tooltip {
+  position: absolute;
+  white-space: nowrap;
+  background: white;
+  padding: 4px 6px;
+  border: 1px solid black; }
+
+.bar-chart {
+  position: relative; }
+  .bar-chart .tick {
+    font-size: 14px; }
+  .bar-chart .label {
+    font-weight: bold; }
+
+.pie-chart {
+  text-align: center;
+  position: relative; }
+  .pie-chart .tooltip {
+    text-align: left; }
+
+.binary-slider {
+  width: 100%;
+  border: 1px solid black;
+  white-space: nowrap; }
+
+.half {
+  display: inline-block;
+  height: 100%;
+  text-align: center;
+  padding: 7px; }
+  .half .heading {
+    font-weight: bold;
+    margin-bottom: -5px; }
+
+.yes-half {
+  background: #003c7f;
+  color: white; }
+
+.medium-top-margin {
+  margin-top: 15px !important; }
+
+/*# sourceMappingURL=main.css.map */

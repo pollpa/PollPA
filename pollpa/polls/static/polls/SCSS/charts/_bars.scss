@@ -1,0 +1,19 @@
+.tooltip{
+  position: absolute;
+  white-space: nowrap;
+  background: white;
+  padding: 4px 6px;
+  border: 1px solid black;
+}
+
+.bar-chart{
+  position: relative;
+
+  .tick{
+    font-size: 14px;
+  }
+
+  .label{
+    font-weight: bold;
+  }
+}

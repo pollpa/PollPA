@@ -1,0 +1,17 @@
+html,
+body {
+ height: 100%;
+}
+
+#wrapper {
+   min-height:100%;
+   position:relative;
+}
+
+footer{
+  background: $light-gray;
+  padding: 2 * $padding-top $padding-left;
+  position:absolute;
+  bottom:0;
+  width:100%;
+}
