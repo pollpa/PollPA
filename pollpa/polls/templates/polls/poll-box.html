@@ -1,6 +1,6 @@
 {% load humanize %}
 
-<a class="column box poll-box {{class}}" href="/poll/{{poll.id}}">
+<a href="/poll/{{poll.id}}" class="box poll-box has-text-grey-dark">
   <h3 class="is-size-4">{{poll.title}}</h3>
   <p class="is-size-5">{{poll.description}}</p>
 
@@ -18,5 +18,4 @@
       <p class="level-item heading">Posted {{poll.available|naturalday}}</p>
     </div>
   </div>
-
 </a>
