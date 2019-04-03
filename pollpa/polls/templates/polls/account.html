@@ -1,7 +1,7 @@
 {% extends 'polls/content.html' %}
 
 {% block title %}
-  <title>My Account • PollPA</title>
+<title>My Account • PollPA</title>
 {% endblock %}
 
 {% block header %}
@@ -20,4 +20,35 @@
 {% endblock %}
 
 {% block content %}
+<form action="/account/" method="post">
+  {% if submitted %}
+  <div class="notification is-success">
+    <strong>Your details are updated!</strong> The new settings were applied to your account.
+  </div>
+  {% endif %}
+  <a href="{% url 'logout' %}" class="button is-info is-outlined">Log Out This Computer</a>
+  <a href="{% url 'superlogout' %}" class="button is-danger is-outlined">Log Out Everywhere</a>
+  <hr>
+  {% csrf_token %}
+  <div class="control">
+    <input class="input" type="text" value="{{request.user.email}}" disabled>
+  </div>
+  <br>
+  <div class="control">
+    <input class="input" type="text" value="Class of {{profile.grade}}" disabled>
+  </div>
+  <hr>
+  <label class="checkbox">
+    <input type="checkbox" name="emailupdates" {% if profile.send_emails %} checked {% endif %}>
+    <span>Send email updates (for new polls, usually)</span>
+  </label>
+  <br>
+  <br>
+  <div class="control">
+    <input class="input" type="password" name="password" placeholder="Enter new password, if you wish">
+  </div>
+  <br>
+  <button class="button is-link light" type="submit">Update Settings</button>
+  <hr>
+</form>
 {% endblock %}
