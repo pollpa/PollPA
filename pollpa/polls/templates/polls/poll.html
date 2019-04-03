@@ -65,7 +65,7 @@
   {% endif %}
   <div class="column is-8" id="questions">
     {% if state == "results" %}
-      <div class="tabs is-toggle is-centered">
+      <div class="tabs">
         <ul>
           <li class="{% if filter_settings.grade == "all" %} is-active {% endif %}">
             <a href="?filter=all">
@@ -89,20 +89,28 @@
           </p>
         </div>
       {% endif %}
-      {% for response in responses %}
-        <h2 class="is-size-4 title">{{response.title}}</h2>
-        {% if response.description %}<p class="subtitle is-size-5">{{response.description}}&nbsp;</p> {% endif %}
+      {% if filter_settings.total > 2 %}
+        {% for response in responses %}
+          <h2 class="is-size-4 title">{{response.title}}</h2>
+          {% if response.description %}<p class="subtitle is-size-5">{{response.description}}&nbsp;</p> {% endif %}
 
-        {% if response.graph == "bar" %}
-          {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
-        {% elif response.graph == "binary-slider" %}
-          {% include "polls/graphs/binary-slider.html" with data=response.data %}
-        {% elif response.graph == "pie" %}
-          {% include "polls/graphs/pie.html" with data=response.data ylabel=response.ylabel  %}
-        {% endif %}
-        <hr>
-        <br>
-      {% endfor %}
+          {% if response.graph == "bar" %}
+            {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
+          {% elif response.graph == "binary-slider" %}
+            {% include "polls/graphs/binary-slider.html" with data=response.data %}
+          {% elif response.graph == "pie" %}
+            {% include "polls/graphs/pie.html" with data=response.data ylabel=response.ylabel  %}
+          {% endif %}
+          <hr>
+          <br>
+        {% endfor %}
+      {% else %}
+        <div class="notification is-warning">
+          <p>
+            Because there are fewer than three votes which match your filter, no results can be shown.
+          </p>
+        </div>
+      {% endif %}
     {% elif state == "vote" %}
       <form action="/poll/{{poll.id}}/" method="post">
         {% csrf_token %}
