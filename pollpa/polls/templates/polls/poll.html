@@ -25,19 +25,19 @@
   </div>
   <div class="column is-10" id="questions">
     {% if state == "results" %}
-      {% for response in poll.responses %}
-      <h2 class="is-size-4 title">{{response.title}}</h2>
-      <p class="subtitle is-size-5">{{response.description}}</p>
+      {% for response in responses %}
+        <h2 class="is-size-4 title">{{response.title}}</h2>
+        <p class="subtitle is-size-5">{{response.description}}</p>
 
-      {% if response.graph == "bar" %}
-        {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
-      {% elif response.graph == "binary-slider" %}
-        {% include "polls/graphs/binary-slider.html" with data=response.data %}
-      {% elif response.graph == "pie" %}
-        {% include "polls/graphs/pie.html" with data=response.data ylabel=response.ylabel  %}
-      {% endif %}
-      <br>
-      <br>
+        {% if response.graph == "bar" %}
+          {% include "polls/graphs/bar.html" with data=response.data xlabel=response.xlabel ylabel=response.ylabel %}
+        {% elif response.graph == "binary-slider" %}
+          {% include "polls/graphs/binary-slider.html" with data=response.data %}
+        {% elif response.graph == "pie" %}
+          {% include "polls/graphs/pie.html" with data=response.data ylabel=response.ylabel  %}
+        {% endif %}
+        <br>
+        <br>
       {% endfor %}
     {% elif state == "vote" %}
       <form action="/poll/{{poll.id}}/" method="post">

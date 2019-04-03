@@ -4,7 +4,7 @@ from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from datetime import datetime
-from .models import Poll, QuestionOption, VoteFingerprint, Vote
+from .models import Poll, QuestionOption, VoteFingerprint, Vote, VoteChoice
 
 from .models import Profile
 
@@ -34,66 +34,34 @@ def poll(request, poll_id):
 
         # Push vote markers into database
         VoteFingerprint.objects.create(poll=poll_obj, user=request.user)
-        vote = Vote.objects.create(poll=poll_obj, grade=request.user.grade)
+        vote = Vote.objects.create(poll=poll_obj, grade=Profile.from_user(request.user).grade)
         for selection in selections:
             VoteChoice.objects.create(vote=vote, question=selection.question, choice=selection)
 
         # Recalculate state
         state = poll_obj.state(request)
 
-    print(state)
+    responses = None
+    if state == "results":
+        responses = []
+        for question in poll_obj.questions:
+            q_response = {
+                "title": question.text,
+                "description": question.description,
+                "graph": question.chart,
+                "xlabel": "Responses",
+                "ylabel": "Count",
+                "data": [{"x": choice.text, "y": VoteChoice.objects.filter(question=question, choice=choice).count()} for choice in question.options]
+                # TODO: make binary slider work
+            }
+            responses.append(q_response)
 
     return render(request, 'polls/poll.html', {
         "poll": poll_obj,
         "error": error,
         "state": state,
-            "responses": [{
-                "title": "Question 1 (Checkbox)?",
-                "description": "Testing",
-                "graph": "bar",
-                "xlabel": "Options",
-                "ylabel": "Values",
-                "data": [{
-                    "x": "a",
-                    "y": 100
-                },
-                {
-                    "x": "b",
-                    "y": 45
-                },
-                {
-                    "x": "c",
-                    "y": 300
-                }]
-            },
-            {
-                "title": "Question 2 (Slider)?",
-                "description": "Testing",
-                "graph": "binary-slider",
-                "data": {
-                    "yes": 100,
-                    "no": 50
-                }
-            }, {
-                "title": "Question 3 (Pie Chart)?",
-                "description": "Testing",
-                "graph": "pie",
-                "xlabel": "Options",
-                "ylabel": "Values",
-                "data": [{
-                    "x": "a",
-                    "y": 100
-                },
-                {
-                    "x": "b",
-                    "y": 45
-                },
-                {
-                    "x": "c",
-                    "y": 300
-                }]
-            }]
-        })
+        "responses": responses,
+    })
 
 def _logout(request):
     logout(request)

@@ -91,6 +91,11 @@ class Profile(models.Model):
     grade = models.IntegerField()
     send_emails = models.BooleanField(default=True)
 
+    @staticmethod
+    def from_user(user):
+        print(user)
+        return Profile.objects.get(user=user)
+
 """ Indicates _whether_ a user has voted. Does not contain the vote
  itself. This allows votes to be truthfully and absolutely separated
  from individual users, rendering votes completely anonymous—even
@@ -105,6 +110,7 @@ class Question(models.Model):
     text = models.TextField()
     description = models.TextField(blank=True)
     kind = models.CharField(max_length=2, choices=[("MS", "Multiple Select (Checkboxes)"), ("SS", "Single Select (Radio)")], default="SS")
+    chart = models.CharField(max_length=20, choices=[("bar", "Bar Chart"), ("binary-slider", "Binary Slider"), ("pie", "Pie Chart")], default="bar")
 
     @property
     def options(self):
