@@ -174,17 +174,6 @@ function drawPieCharts(){
   });
 }
 
-/*DATA should be formatted as {
-  "all": [{
-    "x": "label",
-    "y": 0
-  }],
-  "2019": [],
-  "2020": [],
-  "2021": [],
-  "2022": [],
-}*/
-
 /*
   Binary Slider
 */
