@@ -1,19 +1,21 @@
-<a class="column box poll-box {{class}}" href="/poll/{{id}}">
+{% load humanize %}
+
+<a class="column box poll-box {{class}}" href="/poll/{{poll.id}}">
   <h3 class="is-size-4">{{poll.title}}</h3>
   <p class="is-size-5">{{poll.description}}</p>
 
   <div class="level badges is-mobile">
     <div class="level-left">
-      {% if poll.completed %}
-      <span class="tag is-red level-item">Poll Closed</span>
+      {% if poll.is_completed %}
+      <span class="tag is-danger level-item">Poll Closed</span>
       <span class="tag level-item">{{poll.votes|length}} Responses</span>
       {% else %}
-      <span class="tag is-green level-item">10hr left</span>
+      <span class="tag is-success level-item">Closes {{poll.closes|naturaltime}}</span>
       {% endif %}
     </div>
 
     <div class="level-right">
-      <p class="level-item">Posted on 1/11/19</p>
+      <p class="level-item">Posted {{poll.available|naturalday}}</p>
     </div>
   </div>
 

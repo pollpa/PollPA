@@ -10,7 +10,10 @@ from .models import Profile
 
 
 def index(request):
-    return render(request, 'polls/index.html', {})
+    polls = Poll.objects.all().order_by("-closes")
+    return render(request, 'polls/index.html', {
+        "polls": polls
+    })
 
 
 def poll(request, poll_id):
