@@ -1,0 +1,17 @@
+{
+    "spellright.language": [
+        "en_US",
+        "ru_RU"
+    ],
+    "spellright.documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext",
+        "django-html"
+    ],
+    "spellright.parserByClass": {
+        "django-html": {
+            "parser": "xml"
+        }
+    }
+}
