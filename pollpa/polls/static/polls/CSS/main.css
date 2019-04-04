@@ -55,10 +55,11 @@ nav a:hover {
   .pie-chart .column {
     margin-top: 10px; }
   .pie-chart svg {
-    padding: 0; }
+    padding: 0 !important; }
 
 .pie-label {
-  text-align: left; }
+  text-align: left;
+  padding-left: 15px; }
 
 .bubble {
   width: 15px;
@@ -67,6 +68,15 @@ nav a:hover {
   display: inline-block;
   margin-right: 8px; }
 
+@media screen and (max-width: 768px) {
+  svg {
+    margin: 0 auto; }
+
+  .pie-label {
+    width: 300px;
+    margin: 10px auto;
+    padding-left: 0 !important;
+    padding-right: 0 !important; } }
 .binary-slider {
   width: 100%;
   border: 1px solid black;
