@@ -8,6 +8,7 @@ from datetime import datetime
 from .models import Poll, QuestionOption, VoteFingerprint, Vote, VoteChoice, Suggestion, AuthToken
 from .models import Profile
 from django.db.models import Count
+from .email import send_email
 
 
 def index(request):
@@ -77,14 +78,15 @@ def poll(request, poll_id):
 
             if validation["status"] == None:
                 # Push vote markers into database
-                VoteFingerprint.objects.create(poll=poll_obj, user=request.user)
+                VoteFingerprint.objects.create(
+                    poll=poll_obj, user=request.user)
                 vote = Vote.objects.create(
                     poll=poll_obj, grade=Profile.from_user(request.user).grade)
                 for choice_id in question_choice_ids:
                     choice = QuestionOption.objects.get(id=choice_id)
                     VoteChoice.objects.create(
                         vote=vote, question=choice.question, choice=choice)
-                
+
                 validation = {
                     "status": "success",
                     "text": "Your vote has been successfully recorded. You may now view the preliminary results."
@@ -97,12 +99,14 @@ def poll(request, poll_id):
     if state == "results":
         filter_class = request.GET.get("filter", "all")
         filter_settings["grade"] = filter_class
-        vote_choices = VoteChoice.objects.filter(question__poll = poll_obj)
+        vote_choices = VoteChoice.objects.filter(question__poll=poll_obj)
         if filter_class != "all":
             vote_choices = vote_choices.filter(vote__grade=int(filter_class))
-            filter_settings["total"] = Vote.objects.filter(grade=int(filter_class), poll=poll_obj).count()
+            filter_settings["total"] = Vote.objects.filter(
+                grade=int(filter_class), poll=poll_obj).count()
         else:
-            filter_settings["total"] = Vote.objects.filter(poll=poll_obj).count()
+            filter_settings["total"] = Vote.objects.filter(
+                poll=poll_obj).count()
         responses = []
         for question in poll_obj.questions:
             q_response = {
@@ -119,7 +123,8 @@ def poll(request, poll_id):
 
     has_user_voted = False
     if request.user.is_authenticated:
-        has_user_voted = VoteFingerprint.objects.filter(user=request.user, poll=poll_obj).count() > 0
+        has_user_voted = VoteFingerprint.objects.filter(
+            user=request.user, poll=poll_obj).count() > 0
 
     return render(request, 'polls/poll.html', {
         "poll": poll_obj,
@@ -170,22 +175,39 @@ def register(request):
             username = request.POST.get('username', None)
             if not username.endswith("@andover.edu"):
                 username = username + "@andover.edu"
+            username = username.lower()
             password = request.POST.get('password', None)
             grade = int(request.POST.get('grade', None))
             if grade > 2022 or grade < 2019:
                 raise Exception()
             user = User.objects.create_user(username, username, password)
             Profile.objects.create(user=user, grade=grade)
+            send_email("Your PollPA account has been created!",
+                       "welcome", user.email, {"user": user}, Profile.from_user(user).grade)
             login(request, user)
             return redirect("index")
         except Exception as e:
             print(e)
-            context["error"] = "Unable to create your account with the given information; please try again. Either your email is either registered, or you forgot to select a graduation year."
+            context["error"] = "Unable to create your account with the given information; please try again. Either your email is already registered, or you forgot to select a graduation year."
     return render(request, 'polls/register.html', context)
 
 
 def reset(request):
-    return render(request, 'polls/reset-password.html', {})
+    maybe_sent_email = False
+    if request.method == "POST":
+        email = request.POST.get("email", None)
+        if email is not None:
+            maybe_sent_email = True
+            email = email.lower()
+            if not email.endswith("andover.edu"):
+                email = email + "@andover.edu"
+            try:
+                user = User.objects.get(email=email)
+                send_email("PollPA Password Reset Request", "reset",
+                        email, context={}, grade=Profile.from_user(user).grade)
+            except Exception as e:
+                pass
+    return render(request, 'polls/reset-password.html', {"maybe_sent_email": maybe_sent_email})
 
 
 @login_required(login_url="/login")
@@ -205,7 +227,7 @@ def account(request):
             request.user.set_password(password)
             request.user.save()
             submitted = True
-        
+
     return render(request, 'polls/account.html', {
         "profile": profile,
         "submitted": submitted
@@ -228,6 +250,7 @@ def latest(request):
     latest = [poll for poll in Poll.objects.filter().order_by(
         "-closes") if poll.is_available][0].id
     return redirect("poll", poll_id=latest)
+
 
 @login_required(login_url="/login")
 def logout_everywhere(request):

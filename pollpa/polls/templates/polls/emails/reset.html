@@ -1,0 +1,3 @@
+<p>Hello there,</p>
+<p>Someone &mdash; hopefully you &mdash; just requested to reset your account's password. If this was you, click <a href="https://pollpa.com{% url 'account' %}?token={{token.identifier}}">this link</a> to continue. This link will expire on {{token.expires}}, and will only work one time. (To reset your password again, you will need to request a new reset email; you won't be able to use this one.) If you did not request to reset your password, you can safely ignore this email.</p>
+{% include 'polls/emails/footer.html' %}

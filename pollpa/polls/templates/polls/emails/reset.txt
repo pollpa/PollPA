@@ -1,0 +1,7 @@
+Hello there,
+
+Someone -- hopefully you -- just requested to reset your account's password. If this was you, use the following special link to log in: https://pollpa.com{% url 'account' %}?token={{token.identifier}}
+
+This link will expire on {{token.expires}}, and will only work one time. (To reset your password again, you will need to request a new reset email; you won't be able to use this one.) If you did not request to reset your password, you can safely ignore this email.
+
+{% include 'polls/emails/footer.txt' %}

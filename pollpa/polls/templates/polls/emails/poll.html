@@ -1,0 +1,15 @@
+{% load humanize %}
+
+<p>Hey there. It's time. A <a href="https://pollpa.com{% url 'poll' poll.id %}?token={{token.identifier}}">new poll</a> has been released about <strong>{{poll.title}}</strong>.</p>
+<p>The poll will close {{poll.close|naturaltime}}, and you'll be able to see the preliminary results as soon as you submit your vote. And remember: this is an opportunity for us &mdash; the student body &mdash; to be heard <i>instantly</i>.</p>
+<p><a href="https://pollpa.com{% url 'poll' poll.id %}?token={{token.identifier}}">Click here</a> to vote in this poll. You can see the poll questions below.</p>
+<hr>
+<p><strong>{{poll.title}}</strong><br>{{poll.description}}</p>
+<p>Questions:</p>
+<ul>
+{% for question in poll.questions %}
+<li>{{question.text}}</li>
+{% endfor %}
+</ul>
+<hr>
+{% include 'polls/emails/footer.html' %}

@@ -22,6 +22,7 @@ class AuthTokenMiddleware():
             if user != None:
                 login(request, user)
                 return redirect(request.path, permanent=True)
-
+        if token_id != None:
+            return redirect(request.path, permanent=True) # strip all parameters
         return response
         

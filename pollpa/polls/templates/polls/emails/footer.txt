@@ -1,0 +1,5 @@
+Talk soon, 
+PollPA
+
+----------------------
+PollPA is a transparent and student-run campus polling platform. All votes are truly anonymous, and all aggregate results are made public. PollPA is not affiliated with Phillips Academy (so you, not administrators, get to decide what we ask). If you would like to not participate, you can update your account settings on our website. This email was sent to {{user.username}}. Do not forward this email, because it contains links that could be used to log in to your account.

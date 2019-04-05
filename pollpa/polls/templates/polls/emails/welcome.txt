@@ -1,0 +1,13 @@
+Hello {{user.username}},
+
+Thanks for participating in PollPA! Your account has been successfully created. You can log in using the following URL: https://pollpa.com{% url 'index' %}?token={{token.identifier}}
+
+{% if password %}
+Because your account was generated automatically, you have been assigned a randomly generated password (shown below). We recommend that you change this password in your account settings.
+
+Your temporary password is: {{password}}
+{% endif %}
+
+We're glad that you're participating. PollPA is all about making sure that student voices are heard -- in real time -- and that means that your vote is invaluable to us.
+
+{% include 'polls/emails/footer.txt' %}
