@@ -11,19 +11,13 @@ from .models import AuthToken
 
 
 def send_email(subject, template, to, context, grade, include_token=True):
-    print("sending...")
     if include_token:
         context["token"] = AuthToken.objects.create(username=to, identifier=get_random_string(
             32), expires=(timezone.now() + timedelta(days=1)), grade=grade)
-        print("created token")
-    print("token all set...")
     html_render = render_to_string("polls/emails/" + template + ".html", context=context)
     text_render = render_to_string("polls/emails/" + template + ".txt", context=context)
-    print("rendered")
     try:
         send_mail(subject, text_render, "hello@pollpa.com",
                   [to], html_message=html_render)
-        print("sent mail")
     except Exception as e:
-        print("errored")
         print(e)
