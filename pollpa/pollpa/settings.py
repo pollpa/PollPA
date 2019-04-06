@@ -90,7 +90,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-if os.environ.get("DEPLOYMENT", False):
+if os.environ.get("DEPLOYMENT", "False") == "True":
     import django_heroku
     django_heroku.settings(locals())
 else:
