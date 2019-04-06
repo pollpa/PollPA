@@ -39,15 +39,15 @@
   <div class="column is-3">
     <div class="tags">
       {% if poll.is_closed %}
-        <span class="tag is-medium is-warning level-item">Poll closed</span>
+        <span class="tag is-medium is-warning">Poll closed</span>
       {% else %}
-        <span class="tag is-medium is-link level-item">Closes {{poll.closes|naturaltime}}</span>
+        <span class="tag is-medium is-link">Closes {{poll.closes|naturaltime}}</span>
       {% endif %}
       {% if has_user_voted %}
-        <span class="tag is-medium is-info level-item">You voted in this poll</span>
+        <span class="tag is-medium is-info">You voted in this poll</span>
       {% endif %}
       {% if poll.is_public %}
-        <span class="tag is-medium is-primary level-item">Publicly available</span>
+        <span class="tag is-medium is-primary">Publicly available</span>
       {% endif %}
     </div>
     <p class="heading">Launched</p>
