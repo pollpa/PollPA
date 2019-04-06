@@ -26,7 +26,7 @@ def get_grade(email):
 
 matches = re.compile("[a-z]+[0-9]*@andover\.edu").findall(text)
 
-f = open('names.txt', 'w')
+f = open('names.csv', 'w')
 for match in matches:
     f.write(match + "," + str(get_grade(match)) + "\n")
 
