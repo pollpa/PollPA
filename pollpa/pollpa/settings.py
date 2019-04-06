@@ -78,6 +78,12 @@ TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
+EMAIL_HOST = os.environ.get("EMAIL_HOST", None)
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER", None)
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD", None)
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
 USE_L10N = True
 
 USE_TZ = True
