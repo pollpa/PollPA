@@ -118,7 +118,9 @@
         {% for question in poll.questions %}
           {% include 'polls/question.html' with question=question %}
         {% endfor %}
-        <button type="submit" class="button is-link is-large">Cast My Vote</button>
+        <button type="submit" class="button is-link">Cast My Vote</button>
+        <br>
+        <p class = "has-text-grey is-size-7 is-italic"><br>All votes are anonymous&mdash;read the <a href = "https://github.com/pollpa/pollpa">code</a> if you don't believe us.</p>
       </form>
     {% elif state == "authenticate" %}
       <div class="notification is-warning">
