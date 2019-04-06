@@ -56,7 +56,7 @@
     <p class="heading">Closed</p>
     <p>{{poll.available|naturalday|capfirst}}</p>
     <br>
-    <p class="heading">Public Release</p>
+    <p class="heading">Full Data Release</p>
     <p>{{poll.public|naturalday|capfirst}}</p>
     <br>
     <p class="heading">Votes</p>
@@ -82,7 +82,13 @@
         </ul>
       </div>
       <br>
-
+      {% if not poll.is_closed %}
+        <div class="notification is-warning">
+          <p>
+            <strong>These results are not final.</strong> Because the poll is still open for responses, the data below may change.
+          </p>
+        </div>
+      {% endif %}
       {% if filter_settings.grade != "all" %}
         <div class="notification is-light">
           <p>
@@ -106,7 +112,7 @@
           <br>
         {% endfor %}
       {% else %}
-        <div class="notification is-warning">
+        <div class="notification is-light">
           <p>
             Because there are fewer than three votes which match your filter, no results can be shown.
           </p>

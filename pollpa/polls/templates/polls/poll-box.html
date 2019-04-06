@@ -6,7 +6,7 @@
     <p class="is-size-6">{{poll.description}}</p>
   </div>
 
-  <div class="level is-mobile is-pulled-bottom">
+  <div class="level is-mobile">
     <div class="level-left">
       {% if poll.is_completed %}
         <span class="tag is-danger level-item">Poll Closed</span>
@@ -17,9 +17,9 @@
     </div>
     <div class="level-right">
       {% if poll.is_public %}
-        <span class="tag is-primary level-item">Public</span>
+        <span class="tag is-primary level-item">Results Available</span>
       {% else %}
-        <span class="tag is-warning level-item">Not Yet Public</span>
+        <span class="tag is-warning level-item">Results Pending</span>
       {% endif %}
     </div>
   </div>
