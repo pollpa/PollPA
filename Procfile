@@ -1,1 +1,1 @@
-web: cd pollpa && unicorn pollpa.wsgi
+web: cd pollpa && gunicorn pollpa.wsgi
