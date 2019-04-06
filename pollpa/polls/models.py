@@ -201,7 +201,6 @@ class AuthToken(models.Model):
             send_email("Welcome to PollPA!",
                        "welcome", user.email, {"user": user, "password": password}, self.grade)
             return user
-            # TODO: send signup email
         if self.single_use:
             self.delete()
         return users[0]
