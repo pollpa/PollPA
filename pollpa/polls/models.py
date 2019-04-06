@@ -121,6 +121,12 @@ class Suggestion(models.Model):
  to someone with full access to the database.
 """
 
+class AuthorizedEmail(models.Model):
+    email = models.TextField(unique=True)
+    grade = models.IntegerField()
+
+    def __str__(self):
+        return self.email
 
 class VoteFingerprint(models.Model):
     poll = models.ForeignKey(Poll, on_delete=models.CASCADE)

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Poll, AuthToken, Profile, VoteFingerprint, Question, QuestionOption, Vote, VoteChoice, Suggestion
+from .models import Poll, AuthToken, Profile, VoteFingerprint, Question, QuestionOption, Vote, VoteChoice, Suggestion, AuthorizedEmail
 from .email import send_email
 
 # Register your models here.
@@ -11,6 +11,7 @@ admin.site.register(VoteFingerprint)
 admin.site.register(Vote)
 admin.site.register(VoteChoice)
 admin.site.register(Suggestion)
+admin.site.register(AuthorizedEmail)
 
 def announce_polls(modeladmin, request, queryset):
     for poll in queryset:

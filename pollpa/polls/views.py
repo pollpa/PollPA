@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from datetime import datetime
-from .models import Poll, QuestionOption, VoteFingerprint, Vote, VoteChoice, Suggestion, AuthToken
+from .models import Poll, QuestionOption, VoteFingerprint, Vote, VoteChoice, Suggestion, AuthToken, AuthorizedEmail
 from .models import Profile
 from django.db.models import Count
 from .email import send_email
@@ -176,10 +176,12 @@ def register(request):
             if not username.endswith("@andover.edu"):
                 username = username + "@andover.edu"
             username = username.lower()
+            authorization = AuthorizedEmail.objects.get(email=username)
             password = request.POST.get('password', None)
-            grade = int(request.POST.get('grade', None))
-            if grade > 2022 or grade < 2019:
+            verify_password = request.POST.get('verify-password', None)
+            if password != verify_password:
                 raise Exception()
+            grade = authorization.grade
             user = User.objects.create_user(username, username, password)
             Profile.objects.create(user=user, grade=grade)
             send_email("Your PollPA account has been created!",
@@ -188,7 +190,7 @@ def register(request):
             return redirect("index")
         except Exception as e:
             print(e)
-            context["error"] = "Unable to create your account with the given information; please try again. Either your email is already registered, or you forgot to select a graduation year."
+            context["error"] = "Please try again. Either your email is already registered, your email is not a valid Phillips Academy email, or your passwords don't match."
     return render(request, 'polls/register.html', context)
 
 
