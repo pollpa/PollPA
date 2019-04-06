@@ -117,7 +117,6 @@ def poll(request, poll_id):
                 "ylabel": "Count",
                 "filter_settings": filter_settings,
                 "data": [{"x": choice.text, "y": vote_choices.filter(question=question, choice=choice).count()} for choice in question.options]
-                # TODO: make binary slider work
             }
             responses.append(q_response)
 
