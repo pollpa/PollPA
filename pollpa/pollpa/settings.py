@@ -20,8 +20,6 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["*"]
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -107,7 +105,7 @@ STATIC_URL = '/static/'
 
 if os.environ.get("DEPLOYMENT", "False") == "True":
     import django_heroku
-    django_heroku.settings(locals())
+    django_heroku.settings(locals(), logging=False)
     print("Launching on Heroku...")
 else:
     from .local_settings import *
