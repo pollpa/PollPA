@@ -17,7 +17,7 @@ def send_email(subject, template, to, context, grade, include_token=True):
     html_render = render_to_string("polls/emails/" + template + ".html", context=context)
     text_render = render_to_string("polls/emails/" + template + ".txt", context=context)
     try:
-        send_mail(subject, text_render, "hello@pollpa.com",
+        send_mail(subject, text_render, "noreply@pollpa.com",
                   [to], html_message=html_render)
     except Exception as e:
         print(e)
