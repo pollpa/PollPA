@@ -84,6 +84,21 @@ USE_L10N = True
 
 USE_TZ = True
 
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'console': {
+            'class': 'logging.StreamHandler',
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['console'],
+             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+        },
+    },
+}
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -93,5 +108,7 @@ STATIC_URL = '/static/'
 if os.environ.get("DEPLOYMENT", "False") == "True":
     import django_heroku
     django_heroku.settings(locals())
+    print("Launching on Heroku...")
 else:
     from .local_settings import *
+    print("Launching locally...")
