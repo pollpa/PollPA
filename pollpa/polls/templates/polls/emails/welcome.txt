@@ -3,11 +3,13 @@ Hello {{user.username}},
 Thanks for participating in PollPA! Your account has been successfully created. You can log in using the following URL: https://pollpa.com{% url 'index' %}?token={{token.identifier}}
 
 {% if password %}
-Because your account was generated automatically, you have been assigned a randomly generated password (shown below). We recommend that you change this password in your account settings.
+Because your account was generated automatically, you have been assigned a randomly generated password (shown below). We recommend that you change this password in your account settings: https://pollpa.com{% url 'account' %}?token={{token.identifier}}
 
-Your temporary password is: {{password}}
+Your temporary password: {{password}}
+
 {% endif %}
+We're glad that you're participating. PollPA is a casual, fun way to gauge campus opinion -- and we hope you'll continue to vote in future polls.
 
-We're glad that you're participating. PollPA is all about making sure that student voices are heard -- in real time -- and that means that your vote is invaluable to us.
+By the way: if you vote in at least six polls, you'll get a PollPA laptop sticker in your mailbox.
 
 {% include 'polls/emails/footer.txt' %}

@@ -1,8 +1,7 @@
 {% load humanize %}
+Hey there. It's time. A new poll has been released about {{poll.about}}.
 
-Hey there. It's time. A new poll has been released about {{poll.title}}.
-
-The poll will close {{poll.close|naturaltime}}, and you'll be able to see the preliminary results as soon as you submit your vote. And remember: this is an opportunity for us -- the student body -- to be heard instantly.
+The poll will close {{poll.closes|naturaltime}}, and you'll be able to see the preliminary results as soon as you submit your vote. And remember: this is an opportunity for us -- the student body -- to be heard instantly.
 
 Here's the link to the poll: https://pollpa.com{% url 'poll' poll.id %}?token={{token.identifier}}
 
