@@ -10,7 +10,6 @@ admin.site.register(QuestionOption)
 admin.site.register(VoteFingerprint)
 admin.site.register(Vote)
 admin.site.register(VoteChoice)
-admin.site.register(Suggestion)
 admin.site.register(AuthorizedEmail)
 
 def announce_polls(modeladmin, request, queryset):
@@ -26,3 +25,10 @@ class PollAdmin(admin.ModelAdmin):
     actions = [announce_polls]
 
 admin.site.register(Poll, PollAdmin)
+
+class SuggestionAdmin(admin.ModelAdmin):
+    list_display = ["user", "status"]
+    ordering = ["status"]
+    actions = []
+
+admin.site.register(Suggestion, SuggestionAdmin)

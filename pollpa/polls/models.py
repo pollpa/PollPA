@@ -110,6 +110,8 @@ class Profile(models.Model):
 class Suggestion(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     text = models.TextField()
+    status = models.CharField(max_length=1, choices=[(
+        "U", "Unread"), ("R", "Read & Not Implemented"), ("I", "Read & Implemented")], default="U")
 
     def __str__(self):
         return 'Suggestion by ' + self.user.email
