@@ -11,6 +11,6 @@ nav {
   padding-bottom: 8px;
 }
 
-nav a:hover {
+nav a:hover, .navbar.is-dark .navbar-item.has-dropdown:hover .navbar-link {
   background-color: inherit !important;
 }
