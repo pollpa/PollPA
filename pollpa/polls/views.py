@@ -4,12 +4,14 @@ from django.template import loader
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
-from datetime import datetime
-from .models import Poll, QuestionOption, VoteFingerprint, Vote, VoteChoice, Suggestion, AuthToken, AuthorizedEmail
+from datetime import datetime, timedelta
+from .models import Poll, QuestionOption, VoteFingerprint, Vote, VoteChoice, Suggestion, AuthToken, AuthorizedEmail, Question
 from .models import Profile
 from django.db.models import Count
 from .email import send_email
-
+from django.contrib.auth.decorators import user_passes_test
+import json
+from django.utils import timezone
 
 def index(request):
     polls = [poll for poll in Poll.objects.all().order_by("-closes")
@@ -258,3 +260,45 @@ def logout_everywhere(request):
     logout(request.user)
     AuthToken.objects.filter(user=request.user).delete()
     return redirect("index")
+
+@user_passes_test(lambda u: u.is_superuser)
+def management(request):
+
+    submitted = False
+    messages = []
+
+    if request.method == "POST":
+        poll_raw = request.POST.get("poll", "")
+        emails = request.POST.get("emails", "")
+        
+        # Check if there is a question to import
+        if len(poll_raw) > 0:
+            poll_data = json.loads(poll_raw)
+            time = timezone.now() + timedelta(days=365)
+            poll = Poll.objects.create(title=poll_data.get("title"), description=poll_data.get("description"), about=poll_data.get("about"), available=time, closes=time, public=time)
+            for question_obj in poll_data.get("questions"):
+                question = Question.objects.create(poll=poll, text=question_obj.get("text"), description=question_obj.get("description", ""), kind=question_obj.get("kind"), chart=question_obj.get("chart"))
+                i = 0
+                for option_obj in question_obj.get("options"):
+                    option = QuestionOption.objects.create(question=question, sorting_key=i, text=option_obj.get("text"), description=option_obj.get("description", ""))
+                    i += 1
+            submitted = True
+            messages.append({
+                "title": "Successfully imported question!",
+                "description": "Be sure to input correct dates in the dashboard."
+            })
+        if len(emails) > 0:
+            lines = emails.split("\n")
+            for line in lines:
+                email, graduation_year = line.replace(" ", "").split(",")
+                AuthorizedEmail.objects.get_or_create(email=email, grade=int(graduation_year))
+            submitted = True
+            messages.append({
+                "title": "Successfully imported %s users!" % (str(len(lines))),
+                "description": "These users can now register."
+            })
+    print(messages)
+    return render(request, 'polls/management.html', {
+        "submitted": submitted,
+        "messages": messages
+    })

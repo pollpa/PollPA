@@ -13,4 +13,5 @@ urlpatterns = [
     path('account/', views.account, name="account"),
     path('suggest/', views.suggest, name="suggest"),
     path('latest/', views.latest, name="latest"),
+    path('management/', views.management, name="management"),
 ]

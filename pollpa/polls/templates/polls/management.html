@@ -1,0 +1,63 @@
+{% extends 'polls/content.html' %}
+
+{% block title %}
+<title>Platform Management • PollPA</title>
+{% endblock %}
+
+{% block header %}
+<section class="hero is-light">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Platform Management
+      </h1>
+      <h2 class="subtitle">
+        This page provides common data importation and process tools.
+      </h2>
+    </div>
+  </div>
+</section>
+{% endblock %}
+
+{% block content %}
+<form action="/management/" method="post">
+  {% csrf_token %}
+  {% if submitted %}
+  <div class="notification is-success">
+    <strong>All set!</strong> The requested action was successful.
+  </div>
+  {% endif %}
+  {% for message in messages %}
+  <div class="notification is-info">
+    <strong>{{message.title}}</strong> {{message.description}}
+  </div>
+  {% endfor %}
+  <h2 class="title is-4">Email Import</h2>
+  <textarea class="textarea" placeholder="Paste emails as a CSV here." name="emails"></textarea>
+  <hr>
+  <h2 class="title is-4">Poll Import</h2>
+  <p class="subtitle">Note that dates must be set manually in the admin panel; all dates will be set to the time of submission plus one year.</p>
+  <textarea class="textarea" placeholder='{
+    "title": "Poll Title",
+    "description": "Poll description",
+    "about": "what the poll is about",
+    "questions": [
+      {
+        "text": "Question text",
+        "description": "Optional description",
+        "kind": "MS or SS",
+        "chart": "bar, binary-slider, or pie",
+        "options": [
+          {
+            "text": "Option text",
+            "description": "Optional description"
+          }
+        ]
+      }
+    ]
+  }' name="poll"></textarea>
+  <hr>
+  <button class="button is-link light" type="submit">Apply</button>
+  <p><small>Please keep in mind that this quick action panel implements almost zero input validation, and does not provide useful errors. There is some degree of trust here that the admins &mdash; you &mdash; know what you're doing.</small></p>
+</form>
+{% endblock %}
