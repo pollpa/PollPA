@@ -175,7 +175,7 @@ function drawPieCharts(){
 
 function drawBinarySlider(currentThis, data){
   var slider = d3.select(currentThis);
-  var total = data[0].y + data[0].y,
+  var total = data[0].y + data[1].y,
       yes = 100 * data[0].y / total,
       no = 100 * data[1].y / total;
 
