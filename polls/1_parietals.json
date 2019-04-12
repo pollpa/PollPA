@@ -1,0 +1,63 @@
+{
+    "title": "Parietal Rules",
+    "description": "Everyone seems to be talking about PA's room visitation policies. What's your opinion?",
+    "about": "parietal rules",
+    "questions": [{
+        "text": "What is the first thing that comes to mind when someone says “IP”?",
+        "kind": "SS",
+        "chart": "pie",
+        "options": [{
+            "text": "Independent Project"
+        }, {
+            "text": "Illegal Parietal"
+        }]
+    }, {
+        "text": "What is the primary reason that you have parietals (legal or illegal)?",
+        "kind": "SS",
+        "chart": "bar",
+        "options": [{
+            "text": "Studying with friends"
+        }, {
+            "text": "Hanging out with friends"
+        }, {
+            "text": "Sexual activity"
+        }, {
+            "text": "Some other reason"
+        }, {
+            "text": "N/A (I've never had a parietal)"
+        }]
+    }, {
+        "text": "When you have a parietal, what type of dorm is it usually in?",
+        "kind": "SS",
+        "chart": "pie",
+        "options": [{
+            "text": "Boys dorm"
+        }, {
+            "text": "Girls dorm"
+        }, {
+            "text": "All-gender housing"
+        }, {
+            "text": "N/A (I've never had a parietal)"
+        }]
+    }, {
+        "text": "Do you agree with the following statement?",
+        "description": "“Current parietal rules are problematic.”",
+        "kind": "SS",
+        "chart": "binary-slider",
+        "options": [{
+            "text": "Yes"
+        }, {
+            "text": "No"
+        }]
+    }, {
+        "text": "Do you agree with the following statement?",
+        "description": "“Current parietal rules negatively affect my ability to have intimate relationships.”",
+        "kind": "SS",
+        "chart": "binary-slider",
+        "options": [{
+            "text": "Yes"
+        }, {
+            "text": "No"
+        }]
+    }]
+}
