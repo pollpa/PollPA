@@ -1,6 +1,7 @@
 from .models import AuthToken
 from django.contrib.auth import login
 from django.shortcuts import redirect
+from django.utils import timezone
 
 class AuthTokenMiddleware():
     def __init__(self, get_response):
@@ -17,7 +18,7 @@ class AuthTokenMiddleware():
             token_id = request.POST.get("token", None)
         if token_id != None:
             token = AuthToken.objects.filter(identifier=token_id).first()
-        if token != None and not request.user.is_authenticated:
+        if token != None and (not request.user.is_authenticated) and timezone.now() < token.expires:
             user = token.get_user_and_activate()
             if user != None:
                 login(request, user)
