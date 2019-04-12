@@ -180,7 +180,7 @@ class VoteChoice(models.Model):
     choice = models.ForeignKey(QuestionOption, on_delete=models.CASCADE)
 
     def __str__(self):
-        return 'Vote for %s (%s - %s)' % (self.choice.text, self.question.text, self.poll.title)
+        return 'Vote for %s (%s - %s)' % (self.choice.text, self.question.text, self.vote.poll.title)
 
 
 class AuthToken(models.Model):
