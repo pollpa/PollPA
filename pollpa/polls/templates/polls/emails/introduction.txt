@@ -1,0 +1,20 @@
+Hey there,
+
+What’s your opinion on our parietal rules?
+
+No, this isn’t just another survey from the administration. PollPA is an entirely student-run polling project that’s meant to be fun, anonymous, quick, and interesting.
+
+This is the first poll. Welcome to the experiment.
+
+Unlike other campus polls, there will never be more than five questions on a poll, and you’ll be able to see live results as soon as you submit your response &mdash; think Instagram polls, but better.
+
+We hope you’ll join us. It won’t take more than thirty seconds.
+
+Cast your vote here: https://pollpa.com{% url 'poll' poll.id %}?token={{token.identifier}}
+
+Best,
+The PollPA Team
+
+P.S.: The results are anonymous. Properly anonymous. You can read the code if you don’t believe us at <https://github.com/pollpa/PollPA>.
+
+P.P.S.: We’ll be sending this out to the entire school on Monday. You got it early because you’re on the Techmasters or Computer Science Club mailing list.
