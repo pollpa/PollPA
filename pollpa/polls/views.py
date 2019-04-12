@@ -13,6 +13,9 @@ from django.contrib.auth.decorators import user_passes_test
 import json
 from django.utils import timezone
 
+def quote_json(string):
+    return string.replace("'", "’").replace('"', '“')
+
 def index(request):
     polls = [poll for poll in Poll.objects.all().order_by("-closes")
              if poll.is_available]
@@ -118,7 +121,7 @@ def poll(request, poll_id):
                 "xlabel": "Responses",
                 "ylabel": "Count",
                 "filter_settings": filter_settings,
-                "data": [{"x": choice.text, "y": vote_choices.filter(question=question, choice=choice).count()} for choice in question.options]
+                "data": [{"x": quote_json(choice.text), "y": vote_choices.filter(question=question, choice=choice).count()} for choice in question.options]
             }
             responses.append(q_response)
 
