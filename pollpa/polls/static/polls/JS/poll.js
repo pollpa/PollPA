@@ -104,9 +104,9 @@ function drawPieChart(currentThis, data){
       height = radius * 2,
       width = radius * 2;
 
-  var colors = d3.scaleLinear().domain([0, data.length])
+  var colors = d3.scaleLinear().domain([0, data.length - 1, data.length])
     .interpolate(d3.interpolateHcl)
-    .range(["white", blue]);
+    .range(["white", blue, "#112030"]);
 
   var pie = d3.pie()
     .value(function(d){
