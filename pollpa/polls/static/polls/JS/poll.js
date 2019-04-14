@@ -121,6 +121,11 @@ function drawPieChart(currentThis, data){
       tooltip = d3.select(currentThis).select(".tooltip"),
       tooltipText;
 
+  var total = 0;
+  data.forEach(function(d){
+    total += d.y;
+  });
+
   var pieChart = d3.select(currentThis).select("svg")
     .attr("width", width)
     .attr("height", height)
@@ -135,13 +140,14 @@ function drawPieChart(currentThis, data){
         .attr("d", arc)
         .on("mouseover", function(d, i){
           d3.select(this).attr("fill", d3.color(colors(i + 1)).brighter(0.5).hex());
+
+          tooltipText = "<strong>" + d.data.x + "</strong><br>" + (100 * d.data.y / total).toFixed(2) + "% (" + d.data.y + ")";
+          tooltip.html(tooltipText);
         })
         .on("mousemove", function(d){
           mouse = d3.mouse(currentThis);
 
-          tooltipText = "<strong>" + d.data.x + "</strong><br>" + currentThis.dataset.ylabel + ": " + d.data.y;
           tooltip.classed("is-hidden", false)
-            .html(tooltipText)
             .style("left", mouse[0] - Math.round(tooltip.node().offsetWidth / 2) + "px")
             .style("top", mouse[1] - Math.round(tooltip.node().offsetHeight) - 12 + "px");
         })
