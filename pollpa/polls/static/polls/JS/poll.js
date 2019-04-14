@@ -157,6 +157,11 @@ function drawPieChart(currentThis, data){
         });
 
   //Add labels underneath pie chart
+  d3.select(currentThis).select(".pie-label").append("p")
+    .attr("class", "is-size-7 has-text-gray is-italic")
+    .style("margin-bottom", "10px")
+    .html("Select any section of the chart for more information.<br>");
+
   var pieLabel = d3.select(currentThis).select(".pie-label").selectAll("span")
     .data(data)
     .enter().append("span")
