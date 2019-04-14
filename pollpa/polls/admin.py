@@ -29,7 +29,7 @@ def welcome_poll(modeladmin, request, queryset):
         for auth in AuthorizedEmail.objects.all():
             if auth.email not in user_emails:
                 to_grade_tuple.append((auth.email, auth.grade))
-        send_many_emails("Parietal rules", "introduction", to_grade_tuple, {"poll": poll})
+        send_many_emails("Parietal rules?", "introduction", to_grade_tuple, {"poll": poll})
 
 welcome_poll.short_description = "Welcome non-registered emails using selected poll (parietal rules only)"
 
