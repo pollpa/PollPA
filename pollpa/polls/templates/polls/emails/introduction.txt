@@ -12,6 +12,8 @@ We hope you’ll join us. It won’t take more than thirty seconds.
 
 Cast your vote here: https://pollpa.com{% url 'poll' poll.id %}?token={{token.identifier}}
 
+(Sorry if you've already received this email. Due to a glitch on Monday, the school classified some of our emails as junk. We've fixed that.)
+
 Best,
 The PollPA Team
 
