@@ -1,0 +1,54 @@
+{
+    "title": "(Non) Sibi Culture",
+    "description": "'Non Sibi' is a fundamental value of our school community. But how well do we live up to it?",
+    "about": "(non) sibi culture",
+    "questions": [
+        {
+            "text": "Do you agree with the following statement?",
+            "description": "“My peers embody 'non sibi' on a daily basis.”",
+            "kind": "SS",
+            "chart": "bar",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                },
+                {
+                    "text": "Neutral"
+                }
+            ]
+        },
+        {
+            "text": "Do you agree with the following statement?",
+            "description": "“My peers took Non Sibi Day seriously.”",
+            "kind": "SS",
+            "chart": "bar",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                },
+                {
+                    "text": "Neutral"
+                }
+            ]
+        },
+        {
+            "text": "If Non Sibi Day were optional, would you participate?",
+            "kind": "SS",
+            "chart": "binary-slider",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        }
+    ]
+}
