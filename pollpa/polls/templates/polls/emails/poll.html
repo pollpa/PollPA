@@ -10,7 +10,7 @@
 <p>Questions:</p>
 <ul>
 {% for question in poll.questions %}
-<li>{{question.text}}</li>
+<li>{{question.text}} {{question.description}}</li>
 {% endfor %}
 </ul>
 
