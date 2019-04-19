@@ -7,6 +7,7 @@ from django.core.mail import get_connection, EmailMultiAlternatives
 import sys
 from .models import AuthToken
 import copy
+import threading
 
 def send_mass_html_mail(datatuple, fail_silently=False, user=None, password=None, 
                         connection=None):
@@ -49,16 +50,20 @@ def send_email(subject, template, to, context, grade, include_token=True):
         print(e)
 
 def send_many_emails(subject, template, to_grade_tuple, context, include_token=True):
-    emails = []
-    for to, grade in to_grade_tuple:
-        local_context = copy.deepcopy(context)
-        if include_token:
-            local_context["token"] = AuthToken.objects.create(username=to, identifier=get_random_string(
-                32), expires=(timezone.now() + timedelta(days=10)), grade=grade)
-        html_render = render_to_string("polls/emails/" + template + ".html", context=local_context)
-        text_render = render_to_string("polls/emails/" + template + ".txt", context=local_context)
-        try:
-            emails.append((subject, text_render, html_render, "PollPA <noreply@pollpa.com>", [to]))
-        except Exception as e:
-            print(e)
-    return send_mass_html_mail(emails)
+    def long_send_process():
+        emails = []
+        for to, grade in to_grade_tuple:
+            local_context = copy.deepcopy(context)
+            if include_token:
+                local_context["token"] = AuthToken.objects.create(username=to, identifier=get_random_string(
+                    32), expires=(timezone.now() + timedelta(days=10)), grade=grade)
+            html_render = render_to_string("polls/emails/" + template + ".html", context=local_context)
+            text_render = render_to_string("polls/emails/" + template + ".txt", context=local_context)
+            try:
+                emails.append((subject, text_render, html_render, "PollPA <noreply@pollpa.com>", [to]))
+            except Exception as e:
+                print(e)
+        send_mass_html_mail(emails)
+    t = threading.Thread(target=long_send_process)
+    t.setDaemon(True)
+    t.start()
