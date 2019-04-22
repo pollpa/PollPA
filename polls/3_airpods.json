@@ -1,0 +1,49 @@
+{
+    "title": "AirPods",
+    "description": "AirPods have taken off on campus. What’s the message they send?",
+    "about": "AirPods",
+    "questions": [
+        {
+            "text": "Have you ever owned AirPods?",
+            "kind": "SS",
+            "chart": "binary-slider",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        },
+        {
+            "text": "Do you believe AirPods are a status symbol at PA?",
+            "kind": "SS",
+            "chart": "binary-slider",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        },
+        {
+            "text": "What is your opinion of AirPods?",
+            "kind": "SS",
+            "chart": "bar",
+            "options": [
+                {
+                    "text": "Positive"
+                },
+                {
+                    "text": "Negative"
+                },
+                {
+                    "text": "Neutral"
+                }
+            ]
+        }
+    ]
+}
