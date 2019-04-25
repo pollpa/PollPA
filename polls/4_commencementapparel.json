@@ -1,0 +1,53 @@
+{
+    "title": "Commencement Apparel",
+    "description": "Graduation at PA is iconic. But how can we ensure that all students feel included?",
+    "about": "commencement apparel",
+    "questions": [
+        {
+            "text": "What is your opinion on attire norms at Commencement?",
+            "description": "Typically, students wear either blue blazers or white dresses for the entire event depending on their gender.",
+            "kind": "SS",
+            "chart": "bar",
+            "options": [
+                {
+                    "text": "Positive"
+                },
+                {
+                    "text": "Negative"
+                },
+                {
+                    "text": "Neutral"
+                }
+            ]
+        },
+        {
+            "text": "Would you support a change in Commencement attire to a dress code that is less dependent on one's gender identity?",
+            "kind": "SS",
+            "chart": "bar",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                },
+                {
+                    "text": "Neutral"
+                }
+            ]
+        },
+        {
+            "text": "Would you support a change to graduation gowns during the Commencement ceremony?",
+            "description": "Graduation gowns are the robes typically worn at university graduation ceremonies.",
+            "kind": "SS",
+            "chart": "bar",
+            "options": [{
+                "text": "Yes"
+            }, {
+                "text": "No"
+            }, {
+                "text": "Neutral"
+            }]
+        }
+    ]
+}
