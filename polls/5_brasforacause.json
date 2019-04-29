@@ -1,0 +1,48 @@
+{
+    "title": "BRAS 4 A CAUSE",
+    "description": "On Friday (April 27th), students protested after administrators removed two female students from a dance citing clothing as the reason. What’s your take?",
+    "about": "#BRAS4ACAUSE",
+    "questions": [
+        {
+            "text": "Did you participate in BRAS 4 A CAUSE this past Friday?",
+            "kind": "SS",
+            "chart": "binary-slider",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        },
+        {
+            "text": "Do you believe that BRAS 4 A CAUSE effectively addressed a significant issue at PA?",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                },
+                {
+                    "text": "I don’t believe there is an issue"
+                }
+            ]
+        },
+        {
+            "text": "Do you believe PA should have explicit dress guidelines?",
+            "kind": "SS",
+            "chart": "bar",
+            "options": [{
+                "text": "Yes"
+            }, {
+                "text": "No"
+            }, {
+                "text": "Neutral"
+            }]
+        }
+    ]
+}
