@@ -1,6 +1,6 @@
 {% load humanize %}
 
-<p>Hey there. It's time. A <a href="https://pollpa.com{% url 'poll' poll.id %}?token={{token.identifier}}">new poll</a> has been released about <strong>{{poll.about}}</strong>.</p>
+<p>Hey there. It's time. A new poll has been released about <strong>{{poll.about}}</strong>.</p>
 
 <p>The poll will close {{poll.closes|naturaltime}}, and you'll be able to see the preliminary results as soon as you submit your vote.</p>
 

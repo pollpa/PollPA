@@ -1,0 +1,58 @@
+{
+    "title": "Personal Time",
+    "description": "The administration has recently proposed discontinuing personal time. What do you think?",
+    "about": "personal time",
+    "questions": [
+        {
+            "text": "Should Phillips Academy discontinue personal time?",
+            "kind": "SS",
+            "chart": "bar",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                },
+                {
+                    "text": "Neutral"
+                }
+            ]
+        },
+        {
+            "text": "What is the primary reason you request personal time?",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "I have too much work"
+                },
+                {
+                    "text": "I just don't feel like going to my class/sport"
+                },
+                {
+                    "text": "Scheduling conflicts"
+                },
+                {
+                    "text": "Personal issues (e.g. family emergency)"
+                },
+                {
+                    "text": "N/A (I've never used personal time)"
+                }
+            ]
+        },
+        {
+            "text": "Does having personal time available help to reduce stress?",
+            "kind": "SS",
+            "chart": "binary-slider",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        }
+    ]
+}
