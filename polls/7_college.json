@@ -1,0 +1,52 @@
+{
+    "title": "College Culture",
+    "description": "Just a few days ago, seniors made their final college decisions. What are PA’s social norms around discussing them?",
+    "about": "college culture",
+    "questions": [
+        {
+            "text": "Do you believe it is socially acceptable to ask seniors where they are going to college?",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "Depends on how well I know them"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        },
+        {
+            "text": "Have you ever looked up a PA senior on social media to see where they are going to college?",
+            "kind": "SS",
+            "chart": "binary-slider",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        },
+        {
+            "text": "Would you announce what college you are going to on social media?",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "Only if I consider the college prestigious"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        }
+    ]
+}
