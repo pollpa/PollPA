@@ -1,0 +1,73 @@
+{
+    "title": "Earlier Sign-In",
+    "description": "Sign-in wasn’t always at 9:30pm (and 8pm on Sundays). Was the change effective?",
+    "about": "earlier sign-in",
+    "questions": [
+        {
+            "text": "What is your opinion on this year’s shift to earlier sign-in times?",
+            "description": "Last year, sign-in on Monday, Tuesday, and Wednesday was 10:00 PM and sign-in on Sunday was 9:30pm.",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "I support earlier sign-in"
+                },
+                {
+                    "text": "I don't support earlier sign-in"
+                },
+                {
+                    "text": "I'm neutral"
+                }
+            ]
+        },
+        {
+            "text": "Do you believe that you get more sleep with 9:30pm sign-in than you would if sign-in were at 10:00pm?",
+            "description": "Day students are not allowed on campus after sign-in.",
+            "kind": "SS",
+            "chart": "binary-slider",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        },
+        {
+            "text": "How does earlier sign-in affect your relationship with your house counselor/house complement(s)?",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "It improves my relationship"
+                },
+                {
+                    "text": "It harms my relationship"
+                },
+                {
+                    "text": "It has no effect"
+                },
+                {
+                    "text": "N/A (I’m a day student)"
+                }
+            ]
+        },
+        {
+            "text": "How does earlier sign-in affect your ability to socialize?",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "It improves my ability to socialize"
+                },
+                {
+                    "text": "It harms my ability to socialize"
+                },
+                {
+                    "text": "It has no effect"
+                }
+            ]
+        }
+    ]
+}
