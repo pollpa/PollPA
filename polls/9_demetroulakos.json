@@ -1,0 +1,83 @@
+{
+    "title": "Guest Poll: Faculty-Student Communication (Nick Demetroulakos)",
+    "description": "Written by Nick Demetroulakos, this poll tries to better understand the relationship between faculty and students. The PollPA team did not write this poll.",
+    "about": "faculty-student communication (guest poll by Nick Demetroulakos)",
+    "questions": [
+        {
+            "text": "With which adult(s) do you feel most comfortable being candid and honest?",
+            "description": "Please select only one. Poll written by Nick Demetroulakos.",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "Teacher"
+                },
+                {
+                    "text": "Sykes counselor"
+                },
+                {
+                    "text": "Coach"
+                },
+                {
+                    "text": "House counselor"
+                },
+                {
+                    "text": "College counselor"
+                },
+                {
+                    "text": "Staff"
+                },
+                {
+                    "text": "Religious leader"
+                },
+                {
+                    "text": "Other"
+                }
+            ]
+        },
+        {
+            "text": "Which thing in your opinion most erode trust between faculty and students?",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "Lack of frequent communication/contact"
+                },
+                {
+                    "text": "Lack of transparency about policy changes"
+                },
+                {
+                    "text": "Lack of confidence in other party"
+                },
+                {
+                    "text": "Feeling unnoticed"
+                },
+                {
+                    "text": "Something else"
+                }
+            ]
+        },
+        {
+            "text": "Which thing in your opinion most effectively builds trust between faculty and students?",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "Frequent contact"
+                },
+                {
+                    "text": "Casual, non-academic engagement"
+                },
+                {
+                    "text": "Feeling valued"
+                },
+                {
+                    "text": "Confidence in the other party"
+                },
+                {
+                    "text": "Something else"
+                }
+            ]
+        }
+    ]
+}
