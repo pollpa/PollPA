@@ -99,6 +99,12 @@ nav a:hover, .navbar.is-dark .navbar-item.has-dropdown:hover .navbar-link {
   background: #003c7f;
   color: white; }
 
+.table-chart {
+  counter-reset: rowNumber; }
+  .table-chart .table .table-rank:after {
+    counter-increment: rowNumber;
+    content: counter(rowNumber); }
+
 .medium-top-margin {
   margin-top: 15px !important; }
 

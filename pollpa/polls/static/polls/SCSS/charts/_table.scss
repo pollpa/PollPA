@@ -1,0 +1,8 @@
+.table-chart {
+    counter-reset: rowNumber;
+    
+    .table .table-rank:after {
+        counter-increment: rowNumber;
+        content: counter(rowNumber);
+    }
+}

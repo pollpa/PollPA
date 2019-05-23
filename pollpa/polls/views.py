@@ -113,7 +113,9 @@ def poll(request, poll_id):
             filter_settings["total"] = Vote.objects.filter(
                 poll=poll_obj).count()
         responses = []
+        total_votes = Vote.objects.filter(poll=poll_obj).count()
         for question in poll_obj.questions:
+            choice_count = {choice: vote_choices.filter(question=question, choice=choice).count() for choice in question.options}
             q_response = {
                 "title": question.text,
                 "description": question.description,
@@ -121,10 +123,9 @@ def poll(request, poll_id):
                 "xlabel": "Responses",
                 "ylabel": "Count",
                 "filter_settings": filter_settings,
-                "data": [{"x": quote_json(choice.text), "y": vote_choices.filter(question=question, choice=choice).count()} for choice in question.options]
+                "data": [{"x": quote_json(choice.text), "y": choice_count[choice], "percent": (100 * choice_count[choice] / total_votes)} for choice in question.options]
             }
             responses.append(q_response)
-
     has_user_voted = False
     if request.user.is_authenticated:
         has_user_voted = VoteFingerprint.objects.filter(
