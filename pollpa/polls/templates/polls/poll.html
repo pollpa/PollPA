@@ -107,6 +107,8 @@
             {% include "polls/graphs/binary-slider.html" with data=response.data %}
           {% elif response.graph == "pie" %}
             {% include "polls/graphs/pie.html" with data=response.data ylabel=response.ylabel  %}
+          {% elif response.graph == "table" %}
+            {% include "polls/graphs/table.html" with data=response.data %}
           {% endif %}
           <hr>
           <br>

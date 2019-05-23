@@ -145,7 +145,7 @@ class Question(models.Model):
     kind = models.CharField(max_length=2, choices=[(
         "MS", "Multiple Select (Checkboxes)"), ("SS", "Single Select (Radio)")], default="SS")
     chart = models.CharField(max_length=20, choices=[("bar", "Bar Chart"), (
-        "binary-slider", "Binary Slider"), ("pie", "Pie Chart")], default="bar")
+        "binary-slider", "Binary Slider"), ("pie", "Pie Chart"), ("table", "Table")], default="bar")
 
     @property
     def options(self):
