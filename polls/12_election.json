@@ -1,0 +1,197 @@
+{
+    "title": "2020 Election",
+    "description": "The 2020 elections may seem far away, but the primaries are already in full swing.",
+    "about": "the 2020 election",
+    "questions": [
+        {
+            "text": "Who do you think will win the 2020 US Presidential Election?",
+            "kind": "SS",
+            "chart": "pie",
+            "options": [
+                {
+                    "text": "Republicans"
+                },
+                {
+                    "text": "Democrats"
+                }
+            ]
+        },
+        {
+            "text": "Which candidate do you most want to be the next US President?",
+            "kind": "SS",
+            "chart": "table",
+            "options": [
+              {
+                "text": "Donald Trump (R)"
+              },
+              {
+                "text": "Bill Weld (R)"
+              },
+              {
+                "text": "Michael Bennet (D)"
+              },
+              {
+                "text": "Joe Biden (D)"
+              },
+              {
+                "text": "Bill de Blasio (D)"
+              },
+              {
+                "text": "Cory Booker (D)"
+              },
+              {
+                "text": "Steve Bullock (D)"
+              },
+              {
+                "text": "Pete Buttigieg (D)"
+              },
+              {
+                "text": "Julián Castro (D)"
+              },
+              {
+                "text": "John Delaney (D)"
+              },
+              {
+                "text": "Tulsi Gabbard (D)"
+              },
+              {
+                "text": "Kirsten Gillibrand (D)"
+              },
+              {
+                "text": "Mike Gravel (D)"
+              },
+              {
+                "text": "Kamala Harris (D)"
+              },
+              {
+                "text": "John Hickenlooper (D)"
+              },
+              {
+                "text": "Jay Inslee (D)"
+              },
+              {
+                "text": "Amy Klobuchar (D)"
+              },
+              {
+                "text": "Wayne Messam (D)"
+              },
+              {
+                "text": "Seth Moulton (D)"
+              },
+              {
+                "text": "Beto O'Rourke (D)"
+              },
+              {
+                "text": "Tim Ryan (D)"
+              },
+              {
+                "text": "Bernie Sanders (I)"
+              },
+              {
+                "text": "Eric Swalwell (D)"
+              },
+              {
+                "text": "Elizabeth Warren (D)"
+              },
+              {
+                "text": "Marianne Williamson (D)"
+              },
+              {
+                "text": "Andrew Yang (D)"
+              },
+              {
+                "text": "Other"
+              },
+            ]
+        },
+        {
+            "text": "Which candidate(s) would you be satisfied with being the next US President?",
+            "description": "Select all that apply",
+            "kind": "MS",
+            "chart": "table",
+            "options": [
+              {
+                "text": "Donald Trump (R)"
+              },
+              {
+                "text": "Bill Weld (R)"
+              },
+              {
+                "text": "Michael Bennet (D)"
+              },
+              {
+                "text": "Joe Biden (D)"
+              },
+              {
+                "text": "Bill de Blasio (D)"
+              },
+              {
+                "text": "Cory Booker (D)"
+              },
+              {
+                "text": "Steve Bullock (D)"
+              },
+              {
+                "text": "Pete Buttigieg (D)"
+              },
+              {
+                "text": "Julián Castro (D)"
+              },
+              {
+                "text": "John Delaney (D)"
+              },
+              {
+                "text": "Tulsi Gabbard (D)"
+              },
+              {
+                "text": "Kirsten Gillibrand (D)"
+              },
+              {
+                "text": "Mike Gravel (D)"
+              },
+              {
+                "text": "Kamala Harris (D)"
+              },
+              {
+                "text": "John Hickenlooper (D)"
+              },
+              {
+                "text": "Jay Inslee (D)"
+              },
+              {
+                "text": "Amy Klobuchar (D)"
+              },
+              {
+                "text": "Wayne Messam (D)"
+              },
+              {
+                "text": "Seth Moulton (D)"
+              },
+              {
+                "text": "Beto O'Rourke (D)"
+              },
+              {
+                "text": "Tim Ryan (D)"
+              },
+              {
+                "text": "Bernie Sanders (I)"
+              },
+              {
+                "text": "Eric Swalwell (D)"
+              },
+              {
+                "text": "Elizabeth Warren (D)"
+              },
+              {
+                "text": "Marianne Williamson (D)"
+              },
+              {
+                "text": "Andrew Yang (D)"
+              },
+              {
+                "text": "Other"
+              },
+            ]
+        }
+    ]
+}

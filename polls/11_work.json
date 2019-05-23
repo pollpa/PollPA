@@ -1,0 +1,56 @@
+{
+    "title": "Work.",
+    "description": "Finals week is around the corner. Let’s talk about work at PA.",
+    "about": "work",
+    "questions": [
+        {
+            "text": "On a scale of 1 to 5, how hard do you work?",
+            "description": "1 is not hard at all and 5 is very hard.",
+            "kind": "SS",
+            "chart": "bar",
+            "options": [
+                {
+                    "text": "1"
+                },
+                {
+                    "text": "2"
+                },
+                {
+                    "text": "3"
+                },
+                {
+                    "text": "4"
+                },
+                {
+                    "text": "5"
+                }
+            ]
+        },
+        {
+            "text": "Do you think you work harder than the average PA student?",
+            "kind": "SS",
+            "chart": "binary-slider",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        },
+        {
+            "text": "Do you think you work harder than the average American high-school student?",
+            "kind": "SS",
+            "chart": "binary-slider",
+            "options": [
+                {
+                    "text": "Yes"
+                },
+                {
+                    "text": "No"
+                }
+            ]
+        }
+    ]
+}
