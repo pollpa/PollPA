@@ -20,7 +20,7 @@
 {% endblock %}
 
 {% block content %}
-<form action="/login/" method="post">
+{% comment %} <form action="/login/" method="post">
   {% csrf_token %}
   <div class="field has-addons">
     <p class="control is-expanded">
@@ -39,5 +39,8 @@
   <input class="button is-link light" type="submit" />
   <a class = "button is-link is-outlined" href="{% url 'register' %}">Create New Account</a>
   <a class = "button is-link is-outlined" href="{% url 'reset' %}">Reset Password</a>
-</form>
+</form> {% endcomment %}
+<div class="notification is-danger">
+You are viewing an archived version of PollPA. Interactive functionality, such as logging in and voting, is no longer available.
+</div>
 {% endblock %}

@@ -11,13 +11,9 @@
       <div class="columns">
         <div class="column is-6">
           <h1 class="title is-size-2">Casual campus-wide polls. Let's talk about what's interesting.</h1>
-          <p class="subtitle medium-top-margin">Phillips Academy is a complex place. PollPA lets you share your voice —
-            and doesn't take itself too seriously. Entirely student-run. New poll every Monday and Thursday at 5pm.</p>
-          {% if request.user.is_authenticated %}
+          <p class="subtitle medium-top-margin">Phillips Academy is a complex place. PollPA let you share your voice —
+            and didn't take itself too seriously. Entirely student-run. As of June 11, 2019, the site has been archived into a read-only form and no new polls will be published.</p>
           <a class="button is-info is-medium" href="/poll/{{most_recent_poll_id}}">Most Recent Poll</a>
-          {% else %}
-          <a class="button is-info is-medium" href="{% url 'register' %}">Sign Up</a>
-          {% endif %}
         </div>
         <div class="column is-offset-1 is-5">
           <p class="heading">Most Recent Poll</p>
